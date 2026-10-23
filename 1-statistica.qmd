@@ -43,7 +43,16 @@ theme_set(theme_gray()+theme(legend.position = "bottom"))
 
 # Link alle slide
 
-{{< qrcode https//pbosetti.github.io/teaching_site/slides/ADAS/1-statistica.html width=500 height=500 >}}
+
+::: {.columns}
+::: {.column}
+{{< qrcode https//pbosetti.github.io/ADAS/1-statistica.html width=500 height=500 >}}
+:::
+
+::: {.column}
+Questo contenuto è anche disponibile in formato [PDF {{< bi file-earmark-pdf-fill >}}](1-statistica.pdf){target="_blank"}
+:::
+:::
 
 # Statistica descrittiva
 

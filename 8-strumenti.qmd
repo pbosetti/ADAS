@@ -18,8 +18,6 @@ format:
     number-sections: false
 revealjs-plugins:
   - tabset
-execute: 
-  cache: true
 ---
 
 ```{r setup}
@@ -31,7 +29,16 @@ library(patchwork)
 
 # Link alle slide
 
-{{< qrcode https//pbosetti.github.io/teaching_site/slides/ADAS/8-strumenti.html width=500 height=500 >}}
+::: {.columns}
+::: {.column}
+{{< qrcode https//pbosetti.github.io/ADAS/8-strumenti.html width=500 height=500 >}}
+:::
+
+::: {.column}
+Questo contenuto è anche disponibile in formato [PDF {{< bi file-earmark-pdf-fill >}}](8-strumenti.pdf){target="_blank"}
+:::
+:::
+
 
 # Catena di misura
 È un sistema composto da una serie di strumenti collegati che elaborano un segnale per ottenere una misurazione

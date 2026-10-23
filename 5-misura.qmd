@@ -18,13 +18,20 @@ format:
     number-sections: false
 revealjs-plugins:
   - tabset
-execute: 
-  cache: true
 ---
 
 # Link alle slide
 
-{{< qrcode https//pbosetti.github.io/teaching_site/slides/ADAS/5-misura.html width=500 height=500 >}}
+::: {.columns}
+::: {.column}
+{{< qrcode https//pbosetti.github.io/ADAS/5-misura.html width=500 height=500 >}}
+:::
+
+::: {.column}
+Questo contenuto è anche disponibile in formato [PDF {{< bi file-earmark-pdf-fill >}}](5-misura.pdf){target="_blank"}
+:::
+:::
+
 
 ```{r}
 options(width = 60)

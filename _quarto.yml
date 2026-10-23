@@ -9,7 +9,8 @@ project:
   #   - MillCoordinates/**
   #   - Interferometer/**
   #   - images-1/scenes.html
-
+execute:
+  cache: false
 format:
   # defaults, theme, fonts and the dyslexia toggle: _extensions/pbosetti_teaching_tmpl
   pbosetti_teaching_tmpl-revealjs:

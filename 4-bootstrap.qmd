@@ -18,8 +18,6 @@ format:
     number-sections: false
 revealjs-plugins:
   - tabset
-execute: 
-  cache: true
 ---
 
 ```{r}
@@ -34,7 +32,16 @@ theme_set(theme_gray()+theme(legend.position = "bottom"))
 
 # Link alle slide
 
-{{< qrcode https//pbosetti.github.io/teaching_site/slides/ADAS/4-bootstrap.html width=500 height=500 >}}
+::: {.columns}
+::: {.column}
+{{< qrcode https//pbosetti.github.io/ADAS/4-bootstrap.html width=500 height=500 >}}
+:::
+
+::: {.column}
+Questo contenuto è anche disponibile in formato [PDF {{< bi file-earmark-pdf-fill >}}](4-bootstrap.pdf){target="_blank"}
+:::
+:::
+
 
 # Bootstrap
 $\renewcommand{\hat}[1]{\widehat{#1}}$

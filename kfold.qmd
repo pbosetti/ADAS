@@ -8,8 +8,6 @@ institute: "Dpt. of Industrial Engineering, University of Trento"
 format: 
   pbosetti_teaching_tmpl-revealjs:
     number-sections: false
-execute: 
-  cache: true
 params:
   debug: false
 
