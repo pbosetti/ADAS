@@ -1,0 +1,370 @@
+---
+title: "Esercizi"
+author: "Paolo Bosetti"
+date: 2025-10-11
+date-modified: today
+format: html
+number-sections: true
+lang: it
+abstract: |
+  Gli esercizi sono riportati di seguito, prima elencando le domande, poi (a fine documento), gli svolgimenti. I numeri delle domande della prima sezione corrispondeono ai numeri delle risposte nella seconda. 
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(adas.utils)
+# examples_url <- function(example) {
+#   return(paste0("data/", example))
+# }
+```
+
+
+# Domande
+
+## Test di Student
+
+```{r}
+#| include: false
+set.seed(10)
+e1.c1 <- rnorm(9, 12, 1.7) %>% round(1)
+e1.c2 <- rnorm(12, 13, 1.9) %>% round(1)
+```
+
+Si hanno due campioni da 9 e 12 elementi. Il primo ha i valori `r e1.c1`; il secondo `r e1.c2`. Assumendo che i campioni abbiano la stessa varianza, effettuare un test di Student a due lati **senza utilizzare la funzione `t.test()`**.
+
+
+## Potenza del test di Student
+
+Consideriamo il secondo campione dell'esercizio precedente. Risulta $\bar y_2 = `r mean(e1.c2)`$. Verificare con la funzione `t.test()` l'ipotesi che il valore atteso della popolazione d'origine sia diverso da $\mu_2 = 12.7$. Dato che nella fattispecie risulta $\bar y_2 > \mu_2$, effettuare anche un test a un lato e discutere il risultato in termini di *potenza* del test.
+
+Qual è il valore minimo di $\mu_2$ che ci porta a rigettare $H_0$ con una probabilità d'errore minore del 1%?
+
+## Manipolazione dati
+
+Considerare il dataset `ggplot2::diamonds` che riporta il prezzo di vendita di diamanti in funzione delle loro caratteristiche morfologiche.
+
+Raggruppare la dimensione in carati (`carat`) in **cinque gruppi di caratura**. Costruire una tabella che riporti, per ciascun gruppo e per ciascuna categoria di taglio (`cut`), il minimo, il massimo e i tre quartili del prezzo di vendita, in colonne separate.
+
+## Dati di produzione
+
+La tabella dati `prod_defects.csv` sul sito <https://pbosetti.github.io/teaching_site/data.html#list-of-csv-files> contiene dei dati di difettosità (come numero difetti per settimana) su 50 settimane di un impianto di produzione con tre macchine, `M1`, `M2` e `M3`. Per le tre macchine i limiti massimi di difettosità sono, rispettivamente, 27, 32 e 100.
+
+Creare una tabella che riporti, per ognuna delle 50 settimane, la difettosità in percentuale sul massimo per ciascuna macchina e realizzare il corrispondente grafico.
+
+Per ogni macchina, aggiungere anche il calcolo della *media progressiva*, cioè il valor medio dei campioni dal primo all'i-esimo.
+
+::: callout-note
+Ricordare che tutte le tabelle presenti in <https://pbosetti.github.io/teaching_site/data.html> possono essere caricate direttamente dalle funzioni `read_table()` o `read_csv()` passando l'URL generato come `adas.utils::examples_url("nome_del_file.csv")`. 
+:::
+
+# Risposte
+
+## Test di Student
+
+```{r}
+c1 <- c(12, 11.7, 9.7, 11, 12.5, 12.7, 9.9, 11.4, 9.2)
+c2 <- c(12.5, 15.1, 14.4, 12.5, 14.9, 14.4, 13.2, 11.2, 12.6, 14.8, 13.9, 11.9)
+
+c1.m <- mean(c1)
+c2.m <- mean(c2)
+n1 <- length(c1)
+n2 <- length(c2)
+Sp <- sqrt(((n1-1)*var(c1) + (n2-1)*var(c2)) / (n1 + n2 -2))
+
+t0 <- abs(c1.m - c2.m) / (Sp * sqrt(1/n1 + 1/n2))
+p.value <- pt(t0, n1 + n2 -2, lower.tail=FALSE) * 2
+cat(paste("t0:", t0, "\n"))
+cat(paste("p-value:", p.value))
+```
+
+Per verifica: 
+
+```{r}
+t.test(c1, c2, var.equal = TRUE)
+```
+
+## Potenza del test di Student
+
+A due lati:
+
+```{r}
+t.test(c2, mu=12.7)
+```
+
+A un lato:
+
+```{r}
+(t <- t.test(c2, mu=12.7, alternative="greater", conf.level = 0.99))
+```
+
+Adottando il test a un lato, il *p-value* risulta inferiore. Se ci fossimo dati una soglia per la probabilità di un falso positivo pari a $\alpha=0.05$, in particolare, nel primo caso non avremmo potuto rigettare $H_0$, mentre nel secondo sì.
+
+Osservando l'intervallo di confidenza al 99%, valori di $mu_2$ inferiori a `r t$conf.int[1]` consentirebbero di rifiutare l'ipotesi nulla con una probabilità d'errore inferiore all'1%.
+
+::: callout-note
+Provare a modificare il valore del parametro `conf.level` e osservare come l'unico risultato nell'output di `t.test()` è l'ampiezza dell'intervallo di confidenza.
+:::
+
+
+## Manipolazione dati
+
+```{r}
+#| warning: false
+diamonds %>% 
+  mutate(size = cut(carat, breaks = 5), .after=carat) %>% 
+  select(size:clarity, price) %>% 
+  group_by(size,cut) %>% 
+  reframe(
+    probs = seq(0, 100, length.out=5),
+    price = quantile(price),
+    .groups="keep"
+  ) %>% 
+  mutate(probs = paste0(probs, "%")) %>% 
+  pivot_wider(names_from = probs, values_from = price) %>% 
+  knitr::kable()
+```
+
+::: callout-note
+### Osservazioni
+
+- `size:clarity`: in `dplyr` è possibile selezionare più colonne dando un *intervallo* di nomi di colonne.
+- `summarise()` può dare un warning suggerendo di usare `reframe`: **durante il corso e durante l'esame NON utilizzate `reframe()`**, perché essendo sperimentale non ne è garantita la disponibilità sui PC usati per l'esame.
+- Quando le funzioni sommario utilizzate in `summarise()` ritornano più di un valore, il sommario riporta altrettante righe. In questo caso come sommario utilizziamo `quantile()`, che ritorna 5 valori, e otteniamo quindi i valori desiderati, sebbene in un'unica colonna. Aggiungiamo la colonna `perc` per avere le corrispondenti percentuali.
+- Ridistribuiamo poi i valori in colonne mediante `pivot_wider()`.
+:::
+
+
+## Dati di produzione
+
+```{r}
+#| eval: false
+#| include: false
+# Original data created as:
+set.seed(0)
+N <- 50
+defects <- tibble(
+  S = 1:N,
+  M1 = rbinom(N, 30, 0.05),
+  M2 = rbinom(N, 30, 0.02),
+  M3 = rbinom(N, 70, 0.02),
+)
+```
+
+Osserviamo il file di dati originale:
+
+```{r}
+examples_url("prod_defects.csv") %>% 
+  read_file() %>% 
+  substr(1,250) %>% # solo i primi 250 caratteri
+  cat()
+```
+
+È evidente che il file contiene dei commenti inizianti con `#` e che i dati non sono *tidy*.
+
+Importiamo quindi la tabella e trasformiamola in formato *tidy*:
+
+```{r}
+#| message: false
+prod <- examples_url("prod_defects.csv") %>% 
+  read_csv(comment = "#") %>% 
+  pivot_longer(-S, names_to="Macchina", values_to="Difetti") %>% 
+  rename(Settimana=S)
+```
+
+Visualizziamo i dati:
+
+```{r}
+prod %>% 
+  ggplot(aes(x=Settimana,y=Difetti, color=Macchina)) + 
+  geom_point()
+```
+
+Creiamo una tabella di appoggio per i limiti:
+
+```{r}
+limits <- tribble(
+  ~Macchina, ~max,
+  "M1", 27,
+  "M2", 32,
+  "M3", 100
+)
+```
+
+Uniamo le due tabelle e calcoliamo il rapporto:
+
+```{r}
+prod %>% 
+  left_join(limits, by = join_by(Macchina)) %>% 
+  mutate(`Dif.rel.`=(Difetti/max*100) %>% round(2)) %>% 
+  ggplot(aes(x=Settimana, y=`Dif.rel.`, color=Macchina)) +
+  geom_line()
+```
+
+Per il calcolo della media progressiva possiamo usare una mappa, calcolando la media dei valori da 1 a $i$:
+
+```{r}
+examples_url("prod_defects.csv") %>% 
+  read_csv(comment = "#") %>%
+  mutate(
+    M1.m = map_dbl(1:n(), \(i) mean(M1[1:i])),
+    M2.m = map_dbl(1:n(), \(i) mean(M2[1:i])),
+    M3.m = map_dbl(1:n(), \(i) mean(M3[1:i]))
+  ) %>% 
+  slice_head(n=10)
+```
+
+Operare per colonne, però, non è molto pulito: supponiamo che in un futuro l'impianto cresca a 20 macchine, sarebbe necessario ripetere la stessa operazione più volte. È meglio risolvere il problema in formato *tidy*,
+
+Per farlo partiamo dalla tabella *tidy* (`prod`). Non possiamo applicare direttamente una mappa, perché otterremo la media progressiva **di tutti i difetti** mescolando le varie macchine.
+
+Possiamo però sfruttare `group_by`, che consente di operare su una tabella **per gruppi**:
+
+```{r}
+prod %>% 
+  group_by(Macchina) %>% 
+  mutate(
+    mean = map_dbl(1:n(), ~ mean(Difetti[1:.]))
+  ) %>% 
+  slice_head(n=3)
+```
+
+::: callout-important
+Nonostante `slice_head(n=3)` otteniamo 9 righe: come mai? è dovuto al fatto che la tabella è ancora **raggruppata** quindi ogni operazione si applica un gruppo alla volta, ottenendo tre righe per ognuno dei tre gruppi. 
+
+Il raggruppamento può essere disabilitato con `ungroup()`.
+:::
+
+Ora mettiamo tutto assieme, con l'attenzione di calcolare la media progressiva **per la difettosità relativa** (e non per il conteggio):
+
+```{r}
+prod %>% 
+  # Calcolo difettosità relativa
+  left_join(limits, by = join_by(Macchina)) %>% 
+  mutate(`Dif.rel.`=(Difetti/max*100) %>% round(2)) %>% 
+  # Calcolo le medie progressive per gruppi
+  group_by(Macchina) %>% 
+  mutate(
+    mean = map_dbl(1:n(), ~ mean(`Dif.rel.`[1:.]))
+  ) %>% 
+  ungroup() %>% 
+  # Grafico
+  ggplot(aes(x=Settimana, color=Macchina)) +
+  geom_line(aes(y=`Dif.rel.`)) +
+  geom_line(aes(y=mean), linetype=2)
+```
+
+# Regressione
+
+Carichiamo i dati e dividiamoli già in due gruppi *training* e *validation* (80:20):
+
+```{r}
+set.seed(0)
+df <- examples_url("regression.csv") %>% 
+  read_csv(show_col_types = F) %>% 
+  mutate(train = sample(c(T,F), size=n(), replace=T, prob=c(0.8, 0.2)))
+
+df %>% 
+  ggplot(aes(x=x, y=y)) +
+  geom_point(aes(color=train))
+```
+
+Confrontiamo due regressioni lineari, una col modello $y=a + b\log(x)$, una col modello $y=a + b/x^{0.1}$:
+
+```{r}
+df %>% filter(train) %>% 
+  ggplot(aes(x=x, y=y)) +
+  geom_point() +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ I(x^0.1)
+  ) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ log(x),
+    color="red"
+  )
+```
+
+```{r}
+summary(lm(y~log(x), data=df))
+summary(lm(y~I(x^0.1), data=df))
+```
+
+
+Difficile dire quale sia meglio, anche se $R^2$ del modello logaritmico è leggermente più elevato. Proviamo con la cross-validazione, confrontando diverse potenze oltre al logaritmo:
+
+```{r}
+library(modelr)
+models <- c(
+  map(1:15, \(n) lm(y~I(x^(1/n)), data=filter(df, train))),
+  list(lm(y~log(x), data=filter(df, train)))
+)
+
+tibble(
+  n = seq_along(models),
+  train = map_dbl(models, ~ rmse(., filter(df, train))),
+  valid = map_dbl(models, ~ rmse(., filter(df, !train)))
+) %>% 
+  pivot_longer(-n, names_to = "type", values_to = "RMSE") %>% 
+  ggplot(aes(x=n, y=RMSE, fill=type)) + 
+  geom_col(position = "dodge")
+```
+
+L'ultima barra corrisponde al modello logaritmico. Si osserva che RMSE di tale modello per i dati di training e per quelli di valdazione è effettivamente il minimo, anche se l'esponente $1/15$ produce risultati ancora migliori di $1/10$. Tutavia, per $n\gt10$ non si osservano sensibili miglioramenti per l'RMSE sui dati di validazione.
+
+Osserviamo infine i residui per verificare l'assenza di *pattern*:
+
+```{r}
+df %>% 
+  add_residuals(lm(y~log(x), data=df), var="log") %>% 
+  add_residuals(lm(y~I(x^0.1), data=df), var="pow") %>% 
+  select(x, log, pow) %>% 
+  pivot_longer(-x, names_to = "model", values_to = "residual") %>% 
+  ggplot(aes(x=x, y=residual, color=model)) + 
+  geom_point()
+```
+
+In entrambi i casi non si notano pattern significativi. Dal punto di vista fisico, è più frequente trovare relazioni logaritmiche che del tipo $y\propto x^{0.1}$, quindi accettiamo il modello logaritmico.
+
+:::callout-note
+Il grafico di RMSE in funzione del grado sopra riportato non mostra un minimo perché stiamo confrontando lo stesso modello con parametri (l'esponente) differenti e non diversi modelli. Quindi, il modello esponenziale non può **perdere di generalità*, cioè non rischiamo sovra-adattamento al diminuire dell'esponente.
+
+Piuttosto, l'approccio corretto sarebbe quello di regredire anche l'esponente, trattandolo come il coefficiente di una regressione **non-lineare**, cioè regredire il modello $y~a + bx^{1/c}$, dove $c$ compare ovviamente in una relazione non lineare con gli altri coefficienti $a$ e $b$.
+:::
+
+Proviamo con una regressione ai minimi quadrati inserendo anche l'esponente $1/c$ come parametro di regressione:
+
+```{r}
+f <- \(x, a, b, c) a + b*x^(1/c)
+df.nls <- nls(y ~ f(x, a, b, c),
+    data = df,
+    start = list(
+      a = 1, b=1, c=2
+    ),
+    trace=T
+)
+```
+
+Si noti come il valore ottimale di $c$ risulta in effetti moto più alto:
+
+```{r}
+df.nls
+```
+
+Confrontando la regressione non-lineare con il modello logaritmico si osserva come stanno entrambi nella stessa banda di confidenza, quindi continuiamo a preferire il modello logaritmico:
+
+```{r}
+df %>% 
+  add_predictions(df.nls) %>% 
+  ggplot(aes(x=x)) +
+  geom_point(aes(y=y)) +
+  geom_line(aes(y=pred), color="red") + 
+  geom_smooth(
+    aes(y=y),
+    method = "lm",
+    formula = y ~ log(x),
+    linetype=2
+  )
+```
+

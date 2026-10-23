@@ -1,0 +1,568 @@
+/*-- scss:defaults --*/
+
+// ---------------------------------------------------------------------------
+// Palette
+// Dark red is the brand color. Companion hues are picked in OKLCH at the same
+// perceived lightness (L ≈ 0.42–0.45), so blue/green/teal emphasis carries the
+// same visual weight as red, and all clear WCAG AA (≥ 6:1) on white.
+// Neutrals are slightly warm grays, tinted toward the brand hue.
+// Keep embedded pages (e.g. background iframes) in sync with these values.
+// ---------------------------------------------------------------------------
+$pt-red:        #8b1e20; // oklch(0.42 0.145 25) — headings, strong, rules
+$pt-red-dark:   #551112; // oklch(0.30 0.10 25)  — hover, pressed
+$pt-red-bright: #b02a2d; // oklch(0.50 0.17 25)  — small accents
+$pt-red-soft:   #e1a6a3; // oklch(0.78 0.07 22)  — light borders
+$pt-red-tint:   #fae6e5; // oklch(0.94 0.022 22) — hover fills
+$pt-red-wash:   #fef4f4; // oklch(0.975 0.01 22) — stripes, boxes
+
+$pt-blue:       #154d8c; // oklch(0.42 0.12 255) — math, links, secondary
+$pt-green:      #196632; // oklch(0.45 0.11 150) — positive emphasis
+$pt-teal:       #076b6f; // oklch(0.48 0.08 200)
+
+$pt-ink:        #231e1d; // oklch(0.24 0.008 30) — headings on light fills
+$pt-body:       #322c2b; // oklch(0.30 0.008 30) — body text
+$pt-muted:      #6f6765; // oklch(0.52 0.01 30)  — captions, footer
+$pt-rule:       #d8d3d2; // oklch(0.87 0.006 30) — hairlines
+$pt-plate:      #f2f0ed; // gray plate behind schematics
+$pt-plate-edge: #c1bdba;
+
+// ---------------------------------------------------------------------------
+// Typography: Archivo (self-hosted, see fonts/archivo.css) for text and
+// headings. Use the same family in embedded iframes.
+// ---------------------------------------------------------------------------
+$pt-sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$pt-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+$font-family-sans-serif: $pt-sans;
+$font-family-monospace: $pt-mono;
+$presentation-heading-font: $pt-sans;
+$presentation-font-size-root: 30px;
+$presentation-heading-color: $pt-red;
+$presentation-heading-font-weight: 700;
+$presentation-h1-font-size: 2.2em;
+$presentation-h2-font-size: 1.45em;
+$presentation-h3-font-size: 1.1em;
+
+$body-bg: #ffffff;
+$body-color: $pt-body;
+$link-color: $pt-blue;
+$selection-bg: $pt-red-tint;
+$selection-color: $pt-ink;
+
+$code-block-font-size: 0.75em;
+$code-color: $pt-red-dark;
+$code-bg: $pt-red-wash;
+$code-block-bg: #fbfaf9;
+$code-block-border-color: $pt-rule;
+
+/*-- scss:rules --*/
+
+// --- Base text -------------------------------------------------------------
+
+.reveal {
+  font-feature-settings: "kern", "liga";
+}
+
+.reveal a {
+  line-height: 1.3em;
+}
+
+.reveal .slides a {
+  text-decoration: underline;
+  text-decoration-color: rgba($pt-blue, 0.35);
+  text-underline-offset: 0.15em;
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+.reveal strong {
+  color: $pt-red;
+  font-weight: 650;
+}
+
+.reveal em {
+  font-style: italic;
+}
+
+.reveal aside {
+  font-style: italic;
+  color: $pt-muted;
+}
+
+.reveal figcaption,
+.reveal .caption {
+  font-style: italic;
+  text-align: center;
+  color: $pt-muted;
+  font-size: 0.8em;
+}
+
+.reveal ul li::marker,
+.reveal ol li::marker {
+  color: $pt-red;
+}
+
+.reveal ol li::marker {
+  font-weight: 700;
+}
+
+.reveal blockquote {
+  width: auto;
+  margin: 0.6em 0;
+  padding: 0.4em 1em;
+  background: $pt-red-wash;
+  border-left: 4px solid $pt-red;
+  box-shadow: none;
+  font-style: normal;
+}
+
+.reveal .math {
+  color: $pt-blue;
+}
+
+.reveal .smaller {
+  font-size: 75%;
+}
+
+// --- Color emphasis spans ([text]{.bgreen} etc.) ---------------------------
+
+.reveal .bred,
+.reveal .rbold {
+  font-weight: 700;
+  color: $pt-red;
+}
+
+.reveal .bblue {
+  font-weight: 700;
+  color: $pt-blue;
+}
+
+.reveal .bgreen {
+  font-weight: 700;
+  color: $pt-green;
+}
+
+.reveal .rgreen {
+  color: $pt-green;
+}
+
+// --- Headings --------------------------------------------------------------
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+// slide titles: short red bar on a light hairline
+.reveal h2 {
+  padding-bottom: 0.18em;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, $pt-red 0 18%, $pt-rule 18% 100%) 1;
+}
+
+.reveal h3 {
+  color: $pt-ink;
+}
+
+// section dividers (# Heading): red marker on a warm gray band
+.reveal h1:not(.title) {
+  padding: 0.25em 0.5em;
+  background: linear-gradient(to right, $pt-plate, rgba($pt-plate, 0));
+  border-left: 10px solid $pt-red;
+}
+
+// untitled sections (e.g. `# {background-iframe=...}`) must stay invisible
+.reveal h1:empty,
+.reveal h2:empty {
+  display: none;
+}
+
+// undecorated slide title, e.g. `## {.nodeco background-iframe=...}`
+.reveal .slides section.nodeco > h2,
+.reveal .slides h2.nodeco {
+  padding-bottom: 0;
+  border: none;
+  border-image: none;
+}
+
+// callout titles keep their own color, not the red of <strong>
+.reveal .callout .callout-title strong {
+  color: inherit;
+}
+
+// --- Title slide -----------------------------------------------------------
+
+.reveal .title {
+  padding-bottom: 0.15em;
+  border-bottom: 6px solid $pt-red;
+}
+
+.reveal .subtitle {
+  color: $pt-ink;
+  font-weight: 500;
+}
+
+.quarto-title-author-name {
+  font-size: 80%;
+  font-weight: 700;
+  color: $pt-ink;
+}
+
+.quarto-title-affiliation {
+  font-style: italic;
+  color: $pt-muted;
+}
+
+.reveal p.date {
+  font-size: 50%;
+  font-style: italic;
+  color: $pt-muted;
+}
+
+// --- Dyslexia-friendly font (toggle on the title slide, dyslexia-toggle.html)
+
+// OpenDyslexic sets ~1.6× wider than Archivo: font-size-adjust scales it to a
+// fixed x-height (≈ 0.8× Archivo's), and code and math keep their own size.
+html.pt-dyslexic .reveal {
+  --r-main-font: "OpenDyslexic", #{$pt-sans};
+  --r-heading-font: "OpenDyslexic", #{$pt-sans};
+
+  .slides,
+  .footer {
+    font-family: "OpenDyslexic", $pt-sans;
+    font-size-adjust: 0.42;
+  }
+
+  .slides h1,
+  .slides h2,
+  .slides h3,
+  .slides h4 {
+    letter-spacing: 0;
+  }
+
+  .slides pre,
+  .slides code,
+  .slides mjx-container,
+  .slides .MathJax {
+    font-size-adjust: none;
+  }
+
+  // wider text may not fit: let regular slides scroll instead of clipping
+  .slides > section:not(.center):not(.stack),
+  .slides > section.stack > section:not(.center) {
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+.reveal .pt-dys-toggle {
+  margin-top: 1.2em;
+  font-size: 0.5em;
+  color: $pt-muted;
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .pt-switch {
+    position: relative;
+    flex: none;
+    width: 2.4em;
+    height: 1.3em;
+    border-radius: 0.65em;
+    background: $pt-rule;
+    transition: background 0.15s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0.15em;
+      left: 0.15em;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 1px 2px rgba($pt-ink, 0.3);
+      transition: transform 0.15s;
+    }
+  }
+
+  input:checked + .pt-switch {
+    background: $pt-red;
+
+    &::after {
+      transform: translateX(1.1em);
+    }
+  }
+
+  input:focus-visible + .pt-switch {
+    outline: 2px solid $pt-red;
+    outline-offset: 2px;
+  }
+
+  input:checked ~ .pt-switch-label {
+    color: $pt-red;
+  }
+}
+
+// not part of printed slides
+html.print-pdf .reveal .pt-dys-toggle {
+  display: none;
+}
+
+@media print {
+  .reveal .pt-dys-toggle {
+    display: none;
+  }
+}
+
+// --- Chrome: footer, slide number, progress, controls ----------------------
+
+.reveal .footer {
+  color: $pt-muted;
+
+  a {
+    color: $pt-muted;
+  }
+}
+
+.reveal .slide-number,
+.reveal .slide-number a {
+  background: transparent;
+  color: $pt-red;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reveal .progress {
+  color: $pt-red;
+}
+
+.reveal .controls {
+  color: $pt-red;
+}
+
+// --- Code ------------------------------------------------------------------
+
+.reveal code {
+  font-size: 90%;
+}
+
+.reveal :not(pre) > code {
+  padding: 0.05em 0.25em;
+  border-radius: 3px;
+  background: $pt-red-wash;
+  color: $pt-red-dark;
+}
+
+.reveal div.sourceCode,
+.reveal pre.gcode {
+  border: 1px solid $pt-rule;
+  border-left: 3px solid $pt-red;
+  border-radius: 0;
+}
+
+// never clip code blocks (reveal.js caps them at 400px)
+.reveal pre,
+.reveal pre code,
+.reveal div.sourceCode {
+  max-height: none !important;
+}
+
+// code blocks without a known language (e.g. g-code) sit inside their column
+.reveal pre.gcode {
+  width: 94%;
+  box-sizing: border-box;
+  margin: 0.5em 0;
+  background: #fbfaf9;
+}
+
+.reveal .tiny pre code {
+  font-size: 0.5em;
+}
+
+// --- Theorem-like boxes ----------------------------------------------------
+
+.reveal .theorem {
+  background-color: $pt-red-wash;
+  border: 1px solid $pt-red-soft;
+  border-left: 4px solid $pt-red;
+  padding: 10px 14px;
+  margin: 43px 0 10px 0;
+}
+
+.reveal .theorem .title {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: $pt-red;
+  border: none !important;
+  margin-top: -32px;
+  margin-left: 16px;
+  padding: 0 10px;
+  width: fit-content;
+}
+
+.reveal .theorem .title p {
+  margin: 0;
+}
+
+// --- Tables ----------------------------------------------------------------
+
+.reveal table {
+  border-collapse: collapse;
+}
+
+.reveal table thead th {
+  color: $pt-ink;
+  border-bottom: 2px solid $pt-red;
+}
+
+.reveal table tbody tr {
+  border-bottom: 1px solid $pt-rule;
+}
+
+// Bootstrap-like table classes (revealjs does not bundle Bootstrap)
+.reveal table.table-striped tbody tr:nth-child(odd) {
+  background-color: $pt-red-wash;
+}
+
+.reveal table.table-hover tbody tr:hover {
+  background-color: $pt-red-tint;
+}
+
+.reveal table caption {
+  font-style: italic;
+  font-size: 0.7em;
+  color: $pt-muted;
+}
+
+// --- Layout ----------------------------------------------------------------
+
+// columns as flex boxes: robust when a list or paragraph precedes them
+.reveal div.columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+.reveal div.columns > .column {
+  flex: 0 1 auto;
+  box-sizing: border-box;
+}
+
+// --- quarto-live code blocks -----------------------------------------------
+
+.reveal {
+  .card.exercise-editor {
+    --exercise-font-size: 0.6em;
+  }
+
+  // slightly more compact header
+  .card.exercise-editor .card-header {
+    padding: 0.25em 0.5em;
+  }
+
+  // buttons are independently sized by quarto-live
+  .btn.btn-exercise-editor {
+    font-size: 0.55em;
+    padding: 0.15em 0.35em;
+  }
+
+  .cell-output-container {
+    font-size: 0.6em;
+  }
+
+  .exercise-cell-output pre,
+  .exercise-cell-output code {
+    font-size: inherit;
+  }
+}
+
+// a quarto-live cell with editor on the left, output on the right
+.reveal .live-split {
+  .exercise-cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.8em;
+    align-items: start;
+  }
+
+  // important inside CSS grid: allow both sides to shrink
+  .exercise-cell > * {
+    min-width: 0;
+  }
+
+  // editor
+  .exercise-cell .card.exercise-editor {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  // dynamic webR output
+  .exercise-cell .cell-output-container {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .exercise-cell > div:has(> .card.exercise-editor),
+  .exercise-cell > div:has(> .cell-output-container) {
+    display: contents;
+  }
+
+  .cell-output-container {
+    max-height: 65vh;
+    overflow: auto;
+    font-size: 0.65em;
+  }
+}
+
+// --- Quiz option buttons ---------------------------------------------------
+
+.option-button {
+  background-color: $pt-plate !important;
+  color: $pt-ink !important;
+  border: 2px solid $pt-plate-edge !important;
+}
+
+.option-button:hover {
+  background-color: $pt-plate !important;
+  color: $pt-muted !important;
+  border: 2px solid $pt-muted !important;
+}
+
+.option-button.selected {
+  background-color: #f2f6fb !important;
+  color: $pt-ink !important;
+  border: 2px solid $pt-blue !important;
+}
+
+.option-button.correct {
+  background-color: #f0f7f2 !important;
+  color: $pt-ink !important;
+  border: 2px solid $pt-green !important;
+}
+
+.option-button.incorrect {
+  background-color: $pt-red-wash !important;
+  color: $pt-ink !important;
+  border: 2px solid $pt-red !important;
+}

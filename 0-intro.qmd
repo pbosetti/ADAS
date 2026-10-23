@@ -1,0 +1,159 @@
+---
+title: "Introduzione al Corso"
+subtitle: |
+  Analisi Dati e Statistica, 2026--27 \
+  ![](images/by-nc-sa.png){height=30}
+author: "Paolo Bosetti"
+institute: "Università di Trento, Dipartimento di Ingegneria Industriale"
+date: "`r Sys.time()`"
+date-format: "[*Ultimo aggiornamento:* ]DD/MM/YYYY"
+format: 
+  pbosetti_teaching_tmpl-revealjs:
+    number-sections: false
+---
+
+```{r}
+options(width = 60)
+set.seed(0)
+```
+
+
+# Introduzione al corso
+
+Di cosa ci occuperemo per le prossime 60 ore assieme
+
+
+## Ingegneria Industriale
+
+* Cosa significa *"industriale"*?
+
+. . . 
+
+* Si parla di *produzione industriale* per indicare la fabbricazione di beni materiali in **serie**, su **scala massiva**, e non in modo artigianale
+
+. . . 
+
+* In questo si differenzia dall'Ingegneria Civile (no serie) e dell'Informazione (beni immateriali)
+
+
+## ✨ ChatGPT: Su quali competenze si basa l'Ing. Ind.?
+
+
+1. [Technical and Analytical Skills]{.bblue}
+  - Mathematics & **Statistics** → probability, regression, hypothesis testing, statistical process control.
+  - Operations Research → optimization, linear/nonlinear programming, queuing theory, simulation.
+  - Manufacturing Processes & Systems → knowledge of machining, automation, robotics, additive manufacturing.
+  - **Data Analysis & Modeling** → ability to collect, clean, interpret data, and build predictive/optimization models.
+  - Quality Engineering → Six Sigma, lean manufacturing, total quality management (TQM).
+
+## ✨ ChatGPT: Su quali competenze si basa l'Ing. Ind.?
+
+2. [Systems and Process Competence]{.bblue}
+  - Systems Thinking → seeing the whole system (supply chain, production, logistics, people).
+  - Process Design & Improvement → workflow analysis, time & motion studies, ergonomics.
+  - Supply Chain & Logistics → inventory management, distribution systems, **demand forecasting**.
+  - Project Management → planning, scheduling (PERT/CPM, Gantt), resource allocation.
+  - Sustainability & Safety → environmental impact analysis, occupational safety standards.
+
+## ✨ ChatGPT: Su quali competenze si basa l'Ing. Ind.?
+
+3. [Digital and Technological Competence]{.bblue}
+  - Industrial Software → CAD/CAM, ERP (e.g., SAP), MES, PLM systems.
+  - **Programming & Simulation Tools** → Python, MATLAB, **R**, Arena, Simulink, AnyLogic.
+  - **Data-driven Methods** → **machine learning**, IoT, digital twins for smart manufacturing.
+  - Automation & Control → PLCs, SCADA, robotics basics.
+
+## ✨ ChatGPT: Su quali competenze si basa l'Ing. Ind.?
+
+4. [Managerial and Soft Skills]{.bblue}
+  - Decision-Making → balancing cost, quality, and time under uncertainty.
+  - Communication & Teamwork → **writing reports**, making technical presentations, working in cross-disciplinary teams.
+  - Leadership & Change Management → guiding continuous improvement, Kaizen culture.
+  - Economic & Financial Analysis → cost-benefit analysis, ROI, life-cycle costing.
+  - Ethics & Professionalism → considering social and human impact of engineering decisions.
+	
+
+
+## Analisi statistica dei dati
+
+Questo corso fornisce le competenze essenziali perché un ingegnere sia in grado di analizzare e visualizzare correttamente i dati risultanti da **esperimenti scientifici** (cioè condotti in laboratorio) o **industriali** (cioè condotti sul campo, ottenendo dati direttamente da un sistema di produzione)
+
+## Analisi statistica dei dati
+
+Ogni esperimento è basato su un'operazione di misura, la quale produce **dati quantitativi** che contengono un **contributo deterministico** e un **contributo aleatorio**, cioè casuale
+
+-   Il primo è proprio del fenomeno in analisi
+-   il secondo deriva dal contesto: condizioni operative, sistema di misura, materie prime, condizioni ambientali, operatore, ecc.
+
+Un bravo sperimentatore ha le competenze che gli consentono di **isolare il primo contributo dal secondo**, ottenendo quindi informazioni più affidabili e ripetibili
+
+Inoltre, un bravo sperimentatore è in grado di **comunicare** i risultati in modo chiaro e comprensibile e presentandoli in maniera efficace (grafici!)
+
+## Analisi statistica dei dati
+
+Dato che l'analisi dei dati richiede capacità di calcolo, il corso legherà strettamente sia gli aspetti teorici che quelli implementativi, integrando cioè la teoria con la pratica di eseguire al calcolatore gli stessi concetti
+
+Gli **esercizi** sono quindi parte integrante del corso
+
+Imparare l'uso di un **linguaggio e software di analisi dati** (R + RStudio) è parte integrante del corso
+
+## Il linguaggio R
+
+* È un linguaggio nativamente grafico e nato per l'analisi statistica
+* Useremo un ambiente (Positron/Quarto) che consente di preparare report e documenti integrando testo, dati e algoritmi
+* Lo stesso linguaggio sarà usato anche nei corsi:
+  - *Analisi dei dati per l'Ingegneria* (2° anno comune, 1° modulo)
+  - *Misure, sensori ed elaborazione dei segnali* (2° anno comune)
+  - *Laboratorio di chimica per materiali, energia, ambiente* (3° anno Materiali)
+  
+
+
+
+## Modalità d'esame
+L'esame è in due parti, tipicamente nello stesso giorno
+
+-   **prova pratica** (mattina): sulla piattaforma Moodle esamionline vengono proposti una serie di esercizi in R
+  * Ogni esercizio ha un punteggio prefissato
+  * Gli esercizi vengono corretti automaticamente con revisione manuale per quelli che risultano errati. Il voto massimo è **26/30**
+-   **prova orale** (pomeriggio): per chi desidera migliorare il voto (fino al massimo di 30/30L). L'orale può anche peggiorare il voto della prova pratica
+
+:::{.fragment .highlight-red style="font-size: 125%; margin-top: 50px;"}
+Non è possibile sostenere l'orale in una sessione differente dalla prova pratica
+:::
+
+## Modalità d'esame (A.A. 2026--27)
+**ATTENZIONE**: questo corso è uno di due moduli: l'esame è quindi solo una prova parziale e **non viene verbalizzato**
+
+Il voto finale verrà verbalizzato **solo dopo aver superato** entrambi i moduli, inclusa cioè la **prova parziale del primo modulo** (prof. Bertolazzi)
+
+Tra il superamento dei due moduli non possono passare più di 4 appelli (cioè il secondo, quale che sia l'ordine, deve essere superato al massimo al 5° appello successivo al superamento del primo)
+
+:::{.fragment .highlight-red style="font-size: 125%; margin-top: 50px;"}
+Ricordarsi di iscriversi anche all'appello di registrazione!
+:::
+
+## Prova in itinere
+
+È offerta la possibilità di sostenere la prova in itinere che, con le stesse modalità dell'esame finale, copre solo la prima metà del corso
+
+Chi supera e accetta la prova in itinere può sostenere solo metà dell'esame finale, cioè rispondendo solo alle domande relative alla seconda metà del corso
+
+In questo caso il voto finale sarà la media dei due voti, arrotondata all'intero più vicino
+
+
+## Argomenti del corso 
+:::{.incremental}
+1.   **Statistica descrittiva e inferenziale**: descrivere il comportamento di variabili aleatorie e effettuare previsioni probabilistiche
+1.   Introduzione a **R e RStudio**
+1.   **Regressione**: adattare un modello analitico ad una serie di dati sperimentali
+1.   Tecniche di **Bootstrap**: analisi dell'incertezza
+1.   **Taratura** di sistemi di misura e stima dell'**incertezza**
+1.   ***Design of Experiments***: progettazione efficiente delle campagne sperimentali
+1.   **Serie temporali**: analisi e previsione di variabili aleatorie tempo-dipendenti
+:::
+
+## Materiale didattico
+
+* **Moodle**
+* **Testo di riferimento**: online, su <https://pbosetti.github.io/ADAS>
+* **Codice sviluppato in classe**: Il codice R sarà gradualmente pubblicato e aggiornato su GitHub: [https://github.com/pbosetti/ADAS-26](https://github.com/pbosetti/ADAS-26){target="_blank"}

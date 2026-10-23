@@ -1,0 +1,52 @@
+---
+title: "Analisi Dati e Statistica"
+subtitle: "Università di Trento, Dipartimento di Ingegneria Industriale"
+date-modified: "`{r} Sys.time()`"
+date-format: "YYYYMMDD"
+aliases:
+  - /ADAS
+format:
+  pbosetti_teaching_tmpl-revealjs:
+    number-sections: false
+---
+```{r setup, include=FALSE, echo=FALSE}
+library(tidyverse)
+```
+
+
+## Contenuti del corso
+
+
+0.  [Introduzione al corso](0-intro.html){target="_blank"}
+1.  [Statistica descrittiva e inferenziale](1-statistica.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](1-statistica.pdf){target="_blank"}
+2.  [Introduzione a R](2-R-intro.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](2-R-intro.pdf){target="_blank"}
+3.  [Regressione](3-regressione.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](3-regressione.pdf){target="_blank"}
+4.  [Bootstrap](4-bootstrap.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](4-bootstrap.pdf){target="_blank"}
+5.  [Misura, incertezza, taratura](5-misura.html){target="\"_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](5-misura.pdf){target="_blank"}
+6.  [*Design of Experiments*](6-DoE.html){target="\"_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](6-DoE.pdf){target="_blank"}
+7.  [Serie temporali](7-serie_temporali.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](7-serie_temporali.pdf){target="_blank"} (opzionale per l'A.A. 2025-26)
+8.  [Strumenti di misura](8-strumenti.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](8-strumenti.pdf){target="_blank"}
+   
+
+
+## Uso delle slide
+
+Le slide sono interattive. I comandi più utili sono:
+
+-   `F` per presentare a tutto schermo
+-   `E` per la modalità esportazione (poi stampare come PDF dal browser); `E` di nuovo per uscire dalla modalità esportazione
+-   Tasti cursore per navigare avanti e indietro
+-   `ESC` per passare alla modalità overview
+-   `?` per altri comandi
+
+
+## Repository del codice
+
+Il codice R sviluppato durante le lezioni è disponibile su GitHub: [github.com/pbosetti/ADAS-26](https://github.com/pbosetti/ADAS-26){target="_blank"}.
+
+
+## Esercizi
+
+Trovate [qui](esercizi.html) alcuni esercizi risolti.
+
+È anche utile consultare [R for Data Science](http://r4ds.hadley.nz/){target="_blank"} per approfondire l'uso di R e dei pacchetti `tidyverse`.

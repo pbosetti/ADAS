@@ -1,0 +1,7 @@
+_site/*
+.quarto/*
+*_cache/*
+*_files/*
+/fonts
+
+.DS_Store

@@ -1,0 +1,52 @@
+<!-- Dyslexia-friendly font toggle, shown on the title slide only.
+     Off by default; the choice is remembered per browser (localStorage)
+     and can be forced with ?dyslexic=1 / ?dyslexic=0 in the URL. -->
+<script>
+(() => {
+  // PDF export (DeckTape drives a headless browser): default font, no switch
+  if (navigator.webdriver) return;
+
+  const KEY = "pt-dyslexic";
+  const root = document.documentElement;
+
+  const load = () => {
+    const q = new URLSearchParams(location.search).get("dyslexic");
+    if (q !== null) return q === "1" || q === "true";
+    try { return localStorage.getItem(KEY) === "1"; } catch (e) { return false; }
+  };
+  const save = (on) => {
+    try { localStorage.setItem(KEY, on ? "1" : "0"); } catch (e) {}
+  };
+  const apply = (on) => {
+    root.classList.toggle("pt-dyslexic", on);
+    if (window.Reveal && Reveal.isReady && Reveal.isReady()) Reveal.layout();
+  };
+
+  apply(load());
+
+  const mount = () => {
+    const title = document.getElementById("title-slide");
+    if (!title || title.querySelector(".pt-dys-toggle")) return;
+    const box = document.createElement("div");
+    box.className = "pt-dys-toggle";
+    box.innerHTML =
+      '<label><input type="checkbox" role="switch">' +
+      '<span class="pt-switch" aria-hidden="true"></span>' +
+      '<span class="pt-switch-label">Dyslexia-friendly font</span></label>';
+    const input = box.querySelector("input");
+    input.checked = root.classList.contains("pt-dyslexic");
+    input.addEventListener("change", () => {
+      apply(input.checked);
+      save(input.checked);
+    });
+    // after a mouse click, hand the keyboard back to reveal.js navigation
+    input.addEventListener("click", (e) => { if (e.detail > 0) input.blur(); });
+    title.appendChild(box);
+    if (window.Reveal && Reveal.isReady && Reveal.isReady()) Reveal.layout();
+  };
+
+  if (window.Reveal && Reveal.isReady && Reveal.isReady()) mount();
+  else if (window.Reveal) Reveal.on("ready", mount);
+  else window.addEventListener("load", mount);
+})();
+</script>

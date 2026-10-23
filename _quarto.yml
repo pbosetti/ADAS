@@ -1,0 +1,20 @@
+project:
+  type: website
+  preview:
+    port: 4200
+    browser: true
+  # resources:
+  #   - videos/*
+  #   - iframes/*.html
+  #   - MillCoordinates/**
+  #   - Interferometer/**
+  #   - images-1/scenes.html
+
+format:
+  # defaults, theme, fonts and the dyslexia toggle: _extensions/pbosetti_teaching_tmpl
+  pbosetti_teaching_tmpl-revealjs:
+    footer: "paolo.bosetti@unitn.it --- [https://pbosetti.github.io/ADAS/](https://pbosetti.github.io/ADAS/)"
+    lang: it-T
+    fig-width: 5
+    fig-height: 4
+    fig-dpi: 300
