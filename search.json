@@ -1362,21 +1362,21 @@
     "href": "4-bootstrap.html#esempio-2",
     "title": "Tecniche di Bootstrap",
     "section": "Esempio",
-    "text": "Esempio\n\n\nSupponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la regressione non-lineare mediante il metodo dei minimi quadrati\nIl caso di interesse è la misura dell’istante in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)\nIl modello da regredire è: \\[\nf =\n\\begin{cases}\nf_0 & t &lt; t_0 \\\\\na t^2 + b t + c & t \\geq t_0\n\\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nDove \\(f\\) è la forza, \\(f_0\\) è il livello della forza prima del contatto, \\(t_0\\) è l’istante del contatto, e \\(b, ~c\\) parametri di forma della curva di contatto"
+    "text": "Esempio\n\n\nSupponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la regressione non-lineare mediante il metodo dei minimi quadrati\nIl caso di interesse è la misura della posizione in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)\nIl modello da regredire è: \\[\nf =\n\\begin{cases}\nf_0 & y &lt; y_0 \\\\\na y^2 + b y + c & y \\geq y_0\n\\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nDove \\(f\\) è la forza, \\(f_0\\) è il livello della forza prima del contatto, \\(d_0\\) è pa posizione di primo contatto, e \\(b, ~c\\) parametri di forma della curva di contatto"
   },
   {
     "objectID": "4-bootstrap.html#esempio-3",
     "href": "4-bootstrap.html#esempio-3",
     "title": "Tecniche di Bootstrap",
     "section": "Esempio",
-    "text": "Esempio\n\n\nSiccome \\(f(\\cdot)\\) deve essere continua con derivata continua, risulta \\(2at_0+b=0\\) e \\(at_0^2+bt_0+c=f_0\\) e quindi si hanno tre parametri: \\[\nf =\n\\begin{cases}\nf_0 & t &lt; t_0 \\\\\na t^2 - (2at_0)t + at_0^2+f_0 & t \\geq t_0\n\\end{cases}\n\\] Mediante regressione ai minimi quadrati e successivo bootstrap è possibile identificare l’istante di contatto e il relativo intervallo di confidenza per un assegnato livello di confidenza (in questo caso 95%)\n\n\n\n\n\n\n\n\n\n\n\n\n\nRicordare che un livello di confidenza del 95% corrisponde a un limite sulla probabilità di errore di tipo I del test associato pari a \\(100\\% - 95\\% = 5\\%\\)"
+    "text": "Esempio\n\n\nSiccome \\(f(\\cdot)\\) deve essere continua con derivata continua, risulta \\(2ad_0+b=0\\) e \\(ad_0^2+bd_0+c=f_0\\) e quindi si hanno tre parametri: \\[\nf =\n\\begin{cases}\nf_0 & d &lt; d_0 \\\\\na d^2 - (2ad_0)d + ad_0^2+f_0 & d \\geq d_0\n\\end{cases}\n\\] Mediante regressione ai minimi quadrati e successivo bootstrap è possibile identificare la posizione di primo contatto e il relativo intervallo di confidenza per un assegnato livello di confidenza (in questo caso 95%)\n\n\n\n\n\n\n\n\n\n\n\n\n\nRicordare che un livello di confidenza del 95% corrisponde a un limite sulla probabilità di errore di tipo I del test associato pari a \\(100\\% - 95\\% = 5\\%\\)"
   },
   {
     "objectID": "4-bootstrap.html#esempio-4",
     "href": "4-bootstrap.html#esempio-4",
     "title": "Tecniche di Bootstrap",
     "section": "Esempio",
-    "text": "Esempio\n\n\nÈ anche possibile calcolare, per ogni valore del predittore \\(t\\), gli estremi di \\(f\\) considerando tutte le possibili combinazioni dei tre parametri \\(f_0,~t_0,~a\\)\nIn questo modo è possibile identificare una banda di confidenza sulla funzione interpolante (per un assegnato livello di confidenza)"
+    "text": "Esempio\n\n\nÈ anche possibile calcolare, per ogni valore del predittore \\(d\\), gli estremi di \\(f\\) considerando tutte le possibili combinazioni dei tre parametri \\(f_0,~d_0,~a\\)\nIn questo modo è possibile identificare una banda di confidenza sulla funzione interpolante (per un assegnato livello di confidenza)"
   },
   {
     "objectID": "3-regressione.html#basi",

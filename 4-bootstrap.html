@@ -156,7 +156,7 @@ Paolo Bosetti
     </div>
 </div>
 
-  <p class="date"><em>Ultimo aggiornamento:</em> 23/10/2026</p>
+  <p class="date"><em>Ultimo aggiornamento:</em> 25/10/2026</p>
 </section>
 <section id="link-alle-slide" class="title-slide slide level1 center">
 <h1>Link alle slide</h1>
@@ -384,12 +384,12 @@ L = Q^-(\hat \theta, (1-0.95)/2),~~~U = Q^+(\hat \theta, (1-0.95)/2)
 <div class="columns">
 <div class="column">
 <p>Supponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la <strong>regressione non-lineare</strong> mediante il metodo dei minimi quadrati</p>
-<p>Il caso di interesse è la misura dell’istante in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)</p>
+<p>Il caso di interesse è la misura della posizione in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)</p>
 <p>Il modello da regredire è: <span class="math display">\[
 f =
 \begin{cases}
-f_0 &amp; t &lt; t_0 \\
-a t^2 + b t + c &amp; t \geq t_0
+f_0 &amp; y &lt; y_0 \\
+a y^2 + b y + c &amp; y \geq y_0
 \end{cases}
 \]</span></p>
 </div><div class="column">
@@ -403,19 +403,19 @@ a t^2 + b t + c &amp; t \geq t_0
 </div>
 </div>
 </div></div>
-<p>Dove <span class="math inline">\(f\)</span> è la forza, <span class="math inline">\(f_0\)</span> è il livello della forza prima del contatto, <span class="math inline">\(t_0\)</span> è l’istante del contatto, e <span class="math inline">\(b, ~c\)</span> parametri di forma della curva di contatto</p>
+<p>Dove <span class="math inline">\(f\)</span> è la forza, <span class="math inline">\(f_0\)</span> è il livello della forza prima del contatto, <span class="math inline">\(d_0\)</span> è pa posizione di primo contatto, e <span class="math inline">\(b, ~c\)</span> parametri di forma della curva di contatto</p>
 </section>
 <section id="esempio-3" class="slide level2">
 <h2>Esempio</h2>
 <div class="columns">
 <div class="column">
-<p>Siccome <span class="math inline">\(f(\cdot)\)</span> deve essere continua con derivata continua, risulta <span class="math inline">\(2at_0+b=0\)</span> e <span class="math inline">\(at_0^2+bt_0+c=f_0\)</span> e quindi si hanno <strong>tre parametri</strong>: <span class="math display">\[
+<p>Siccome <span class="math inline">\(f(\cdot)\)</span> deve essere continua con derivata continua, risulta <span class="math inline">\(2ad_0+b=0\)</span> e <span class="math inline">\(ad_0^2+bd_0+c=f_0\)</span> e quindi si hanno <strong>tre parametri</strong>: <span class="math display">\[
 f =
 \begin{cases}
-f_0 &amp; t &lt; t_0 \\
-a t^2 - (2at_0)t + at_0^2+f_0 &amp; t \geq t_0
+f_0 &amp; d &lt; d_0 \\
+a d^2 - (2ad_0)d + ad_0^2+f_0 &amp; d \geq d_0
 \end{cases}
-\]</span> Mediante regressione ai minimi quadrati e successivo <strong>bootstrap</strong> è possibile identificare l’<strong>istante di contatto</strong> e il relativo <span class="bblue">intervallo di confidenza</span> per un assegnato livello di confidenza (in questo caso 95%)</p>
+\]</span> Mediante regressione ai minimi quadrati e successivo <strong>bootstrap</strong> è possibile identificare la <strong>posizione di primo contatto</strong> e il relativo <span class="bblue">intervallo di confidenza</span> per un assegnato livello di confidenza (in questo caso 95%)</p>
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
@@ -435,7 +435,7 @@ a t^2 - (2at_0)t + at_0^2+f_0 &amp; t \geq t_0
 <h2>Esempio</h2>
 <div class="columns">
 <div class="column">
-<p>È anche possibile calcolare, per ogni valore del predittore <span class="math inline">\(t\)</span>, gli estremi di <span class="math inline">\(f\)</span> considerando tutte le possibili combinazioni dei tre parametri <span class="math inline">\(f_0,~t_0,~a\)</span></p>
+<p>È anche possibile calcolare, per ogni valore del predittore <span class="math inline">\(d\)</span>, gli estremi di <span class="math inline">\(f\)</span> considerando tutte le possibili combinazioni dei tre parametri <span class="math inline">\(f_0,~d_0,~a\)</span></p>
 <p>In questo modo è possibile identificare una <strong>banda di confidenza</strong> sulla funzione interpolante (per un assegnato livello di confidenza)</p>
 </div><div class="column">
 <div class="cell">
