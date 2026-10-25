@@ -383,14 +383,14 @@ L'unico svantaggio delle tecniche di bootstrap è che sono tecniche esclusivamen
 
 Supponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la **regressione non-lineare** mediante il metodo dei minimi quadrati
 
-Il caso di interesse è la misura dell'istante in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)
+Il caso di interesse è la misura della posizione in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)
 
 Il modello da regredire è:
 $$
 f = 
 \begin{cases}
-f_0 & t < t_0 \\
-a t^2 + b t + c & t \geq t_0
+f_0 & y < y_0 \\
+a y^2 + b y + c & y \geq y_0
 \end{cases}
 $$
 
@@ -398,62 +398,62 @@ $$
 
 :::column
 ```{r}
-f <- function(t, t0 = 0, bias = 0, a = 1) {
-  b <- -2*a*t0
-  c <- bias + a*t0^2
-  y <- a*t^2+b*t+c
-  return(ifelse(t<t0, bias, y))
+force <- function(d, d0 = 0, bias = 0, a = 1) {
+  b <- -2*a*d0
+  c <- bias + a*d0^2
+  f <- a*d^2+b*d+c
+  return(ifelse(d<d0, bias, f))
 }
 set.seed(1)
-onset <- 12.5
+onset <- 1.25
 bias <- 3
 a <- 1
 data <- tibble(
-  t = seq(0, 20, length.out=100),
-  yn = f(t, onset, bias, 1),
-  y = yn + rnorm(length(t), 0, 2)
+  d = seq(0, 2, length.out=100),
+  fn = force(d, onset, bias, 1),
+  f = fn + rnorm(length(d), 0, 0.02)
 )
-fit <- nls(y~f(t, t0, bias, a), data=data, start=list(t0=0, bias=0, a=1))
+fit <- nls(f~force(d, d0, bias, a), data=data, start=list(d0=0, bias=0, a=1))
 data <- add_predictions(data, fit)
 
-data %>% ggplot(aes(x=t, y=y)) +
+data %>% ggplot(aes(x=d, y=f)) +
   geom_point() +
-  labs(x="tempo (s)", y="forza (N)") +
-  coord_cartesian(ylim=c(-5, 60))
+  labs(x="spostamento (mm)", y="forza (N)") +
+  coord_cartesian(ylim=c(2.9, 3.6))
 ```
 
 :::
 
 :::
 
-Dove $f$ è la forza, $f_0$ è il livello della forza prima del contatto, $t_0$ è l'istante del contatto, e $b, ~c$ parametri di forma della curva di contatto
+Dove $f$ è la forza, $f_0$ è il livello della forza prima del contatto, $d_0$ è pa posizione di primo contatto, e $b, ~c$ parametri di forma della curva di contatto
 
 ## Esempio
 
 :::columns
 :::column
-Siccome $f(\cdot)$ deve essere continua con derivata continua, risulta $2at_0+b=0$ e $at_0^2+bt_0+c=f_0$ e quindi si hanno **tre parametri**:
+Siccome $f(\cdot)$ deve essere continua con derivata continua, risulta $2ad_0+b=0$ e $ad_0^2+bd_0+c=f_0$ e quindi si hanno **tre parametri**:
 $$
 f = 
 \begin{cases}
-f_0 & t < t_0 \\
-a t^2 - (2at_0)t + at_0^2+f_0 & t \geq t_0
+f_0 & d < d_0 \\
+a d^2 - (2ad_0)d + ad_0^2+f_0 & d \geq d_0
 \end{cases}
 $$
-Mediante regressione ai minimi quadrati e successivo **bootstrap** è possibile identificare l'**istante di contatto** e il relativo [intervallo di confidenza]{.bblue} per un assegnato livello di confidenza (in questo caso 95%)
+Mediante regressione ai minimi quadrati e successivo **bootstrap** è possibile identificare la **posizione di primo contatto** e il relativo [intervallo di confidenza]{.bblue} per un assegnato livello di confidenza (in questo caso 95%)
 
 :::
 
 :::column
 ```{r}
-stats <- function(y, data) {
-  fit <- nls(y~f(t, t0, bias, a), data=data, start=list(t0=0, bias=0, a=1))
+stats <- function(f, data) {
+  fit <- nls(f~force(d, d0, bias, a), data=data, start=list(d0=0, bias=0, a=1))
   pars <- fit$m$getPars()
   return(pars)
 }
-data.b <- boot(data, \(x, i) stats(x[i,"y"],x[i,]), R=10000)
+data.b <- boot(data, \(x, i) stats(x[i,"d"],x[i,]), R=10000)
 ci <- list(
-  t0 = boot.ci(data.b, type="perc", index=1)$percent[4:5],
+  d0 = boot.ci(data.b, type="perc", index=1)$percent[4:5],
   bias = boot.ci(data.b, type="perc", index=2)$percent[4:5],
   c = boot.ci(data.b, type="perc", index=3)$percent[4:5]
 )
@@ -461,17 +461,17 @@ ci <- list(
 
 
 ```{r}
-data %>% ggplot(aes(x=t, y=y)) +
-  geom_rect(aes(xmin=ci$t0[1], xmax=ci$t0[2], 
+data %>% ggplot(aes(x=d, y=f)) +
+  geom_rect(aes(xmin=ci$d0[1], xmax=ci$d0[2], 
                 ymin=-Inf, ymax=Inf), fill=gray(0.8)) +
   geom_rect(aes(ymin=ci$bias[1], ymax=ci$bias[2], 
                 xmin=-Inf, xmax=Inf), fill=gray(0.8)) +
   geom_point() +
-  geom_line(aes(y=yn, color="regressione")) +
-  geom_vline(aes(xintercept=onset, color="t_0")) +
+  geom_line(aes(y=fn, color="regressione")) +
+  geom_vline(aes(xintercept=onset, color="d_0")) +
   geom_hline(aes(yintercept=bias, color="f_0")) +
-  coord_cartesian(ylim=c(-5, 60)) +
-  labs(x="tempo (s)", y="forza (N)", color="legenda") +
+  coord_cartesian(ylim=c(2.9, 3.6)) +
+  labs(x="spostamento (mm)", y="forza (N)", color="legenda") +
   theme(legend.position = c(1/4, 3/4))
 ```
 
@@ -488,7 +488,7 @@ Ricordare che un livello di confidenza del 95% corrisponde a un limite sulla **p
 
 :::columns
 :::column
-È anche possibile calcolare, per ogni valore del predittore $t$, gli estremi di $f$ considerando tutte le possibili combinazioni dei tre parametri $f_0,~t_0,~a$
+È anche possibile calcolare, per ogni valore del predittore $d$, gli estremi di $f$ considerando tutte le possibili combinazioni dei tre parametri $f_0,~d_0,~a$
 
 In questo modo è possibile identificare una **banda di confidenza** sulla funzione interpolante (per un assegnato livello di confidenza)
 
@@ -496,21 +496,21 @@ In questo modo è possibile identificare una **banda di confidenza** sulla funzi
 
 :::column
 ```{r}
-f_conf <- function(t, f, ci, upper=T) {
+f_conf <- function(d, f, ci, upper=T) {
   df <- expand.grid(ci)
-  df$f <- f(t, df$t0, df$bias, df$c)
+  df$f <- f(d, df$d0, df$bias, df$c)
   return(ifelse(upper, max(df$f), min(df$f)))
 }
 data %>% mutate(
-  upper = map_dbl(t, ~f_conf(., f, ci)),
-  lower = map_dbl(t, ~f_conf(., f, ci, upper=F))
+  upper = map_dbl(d, ~f_conf(., force, ci)),
+  lower = map_dbl(d, ~f_conf(., force, ci, upper=F))
 ) %>%
-  ggplot(aes(x=t, y=y)) + 
+  ggplot(aes(x=d, y=f)) + 
   geom_point() +
   geom_ribbon(aes(ymin=lower, ymax=upper), alpha=1/3) +
-  geom_line(aes(y=yn), color=rgb(0, 2/3, 0)) +
-  coord_cartesian(ylim=c(-5, 60)) +
-  labs(x="tempo (s)", y="forza (N)", color="")
+  geom_line(aes(y=fn), color=rgb(0, 2/3, 0)) +
+  coord_cartesian(ylim=c(2.9, 3.6)) +
+  labs(x="spostamento (mm)", y="forza (N)", color="")
 ```
 
 :::

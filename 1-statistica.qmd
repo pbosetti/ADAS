@@ -22,6 +22,9 @@ format:
         \definecolor{darkblue}{HTML}{00008B}
   pbosetti_teaching_tmpl-revealjs:
     number-sections: false
+    ojs-engine: true
+    filters:
+      - live
     webr:
       cell-options:
         persist: true

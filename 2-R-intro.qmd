@@ -17,6 +17,9 @@ format:
     number-sections: true
   pbosetti_teaching_tmpl-revealjs:
     number-sections: false
+    ojs-engine: true
+    filters:
+      - live
     webr:
       cell-options:
         persist: true
