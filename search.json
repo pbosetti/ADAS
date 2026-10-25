@@ -4,7 +4,7 @@
     "href": "8-strumenti.html#definizioni",
     "title": "Strumenti di misura",
     "section": "Definizioni",
-    "text": "Definizioni\n\n\n\nmisurando: oggetto fisico della misurazione\ntrasduttore: dispositivo che converte una grandezza fisica in un’altra\ncondizionatore: dispositivo che migliore il segnale fisico prodotto dal trasduttore\nconversione AD: trasforma un segnale analogico in un segnale digitale\nacquisizione: opera sul segnale digitale (visualizzazione, registrazione, elaborazione, ecc.)"
+    "text": "Definizioni\n\n\n\nmisurando: oggetto fisico della misurazione\ntrasduttore: dispositivo che converte una grandezza fisica in un’altra\ncondizionatore: dispositivo che migliore il segnale fisico prodotto dal trasduttore\nconversione AD: trasforma un segnale analogico in un segnale digitale\nacquisizione: opera sul segnale digitale (visualizzazione, registrazione, elaborazione, ecc.)\n\n\n\n\n\n\nCatena di misura"
   },
   {
     "objectID": "8-strumenti.html#esempio-misura-estensimetrica",
@@ -39,14 +39,14 @@
     "href": "8-strumenti.html#trasduttore-resistivo",
     "title": "Strumenti di misura",
     "section": "Trasduttore resistivo",
-    "text": "Trasduttore resistivo\n\n\nSfrutta una variazione di resistenza in un circuito parallelo \\(R_{T} = (1-\\Delta)R_v \\frac{1}{\\Delta R_v + R_{sc}}\\)\n\neconomico\ncorse discretamente lunghe\nusura\nmisura rumorosa"
+    "text": "Trasduttore resistivo\n\n\nSfrutta una variazione di resistenza in un circuito parallelo \\[\nR_{T} = (1-\\Delta)R_v \\frac{1}{\\Delta R_v + R_{sc}}\n\\]\n\neconomico\ncorse discretamente lunghe\nusura\nmisura rumorosa"
   },
   {
     "objectID": "8-strumenti.html#trasduttore-interferometrico",
     "href": "8-strumenti.html#trasduttore-interferometrico",
     "title": "Strumenti di misura",
     "section": "Trasduttore interferometrico",
-    "text": "Trasduttore interferometrico\n\n\nÈ basato su un conteggio di oscillazioni su una misura di intensità luminosa\n\nRisoluzione almeno nanometrica, dell’ordine della lunghezza d’onda\nLunghezze molto grandi (nel vuoto anche milioni di kilometri)\nSensibile alle proprietà ottiche del mezzo (funzione della temperatura e umidità, se è aria)\n\n\n\n\n\nInterferometria laser"
+    "text": "Trasduttore interferometrico\n\n\nÈ basato su un conteggio di oscillazioni su una misura di intensità luminosa\n\nRisoluzione almeno nanometrica, dell’ordine della lunghezza d’onda\nLunghezze molto grandi (nel vuoto anche milioni di kilometri)\nSensibile alle proprietà ottiche del mezzo (funzione della temperatura e umidità, se è aria)"
   },
   {
     "objectID": "8-strumenti.html#trasduttore-con-fotodiodo-a-quadrante",

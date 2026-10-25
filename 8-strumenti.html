@@ -198,7 +198,12 @@ Paolo Bosetti
      Quarto launch headless Chrome to rasterise the graph for the PDF pass,
      which hangs intermittently on CI runners and stalls the whole build.
      Regenerate with: dot -Tsvg images/catena.dot -o images/catena.svg -->
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/catena.svg" width="260"></p>
+<figcaption>Catena di misura</figcaption>
+</figure>
+</div>
 </div></div>
 </section>
 <section id="esempio-misura-estensimetrica" class="slide level2">
@@ -249,7 +254,7 @@ Paolo Bosetti
 </div><div class="column">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/induttore.png" width="600"></p>
+<p><img data-src="images/induttore.png" width="400"></p>
 <figcaption>Induttanza variabile</figcaption>
 </figure>
 </div>
@@ -277,35 +282,36 @@ Paolo Bosetti
 <section id="trasduttore-resistivo" class="slide level2">
 <h2>Trasduttore resistivo</h2>
 <div class="columns">
-<div class="column">
-<p>Sfrutta una variazione di resistenza in un circuito parallelo <span class="math inline">\(R_{T} = (1-\Delta)R_v \frac{1}{\Delta R_v + R_{sc}}\)</span></p>
+<div class="column" style="width:40%;">
+<p>Sfrutta una variazione di resistenza in un circuito parallelo <span class="math display">\[
+R_{T} = (1-\Delta)R_v \frac{1}{\Delta R_v + R_{sc}}
+\]</span></p>
 <ul>
 <li>economico</li>
 <li>corse discretamente lunghe</li>
 <li>usura</li>
 <li>misura rumorosa</li>
 </ul>
-</div><div class="column">
-<p><img data-src="images/resistore1.jpg" width="600"> <img data-src="images/resistore2.jpg"></p>
+</div><div class="column" style="width:60%;">
+<!-- built by anatomy/linear-pot/build.mjs --light --out images/linear-pot.html -->
+<iframe src="images/linear-pot.html" width="100%" height="560" style="border:0" title="Trasduttore resistivo lineare e oscilloscopio">
+</iframe>
 </div></div>
 </section>
 <section id="trasduttore-interferometrico" class="slide level2">
 <h2>Trasduttore interferometrico</h2>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:40%;">
 <p>È basato su un conteggio di oscillazioni su una misura di intensità luminosa</p>
 <ul>
 <li>Risoluzione almeno nanometrica, dell’ordine della lunghezza d’onda</li>
 <li>Lunghezze molto grandi (nel vuoto anche milioni di kilometri)</li>
 <li>Sensibile alle proprietà ottiche del mezzo (funzione della temperatura e umidità, se è aria)</li>
 </ul>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/interferometry.gif"></p>
-<figcaption>Interferometria laser</figcaption>
-</figure>
-</div>
+</div><div class="column" style="width:60%;">
+<!-- built by anatomy/interferometer/build.mjs --light --out images/interferometer.html -->
+<iframe src="images/interferometer.html" width="100%" height="550" style="border:0" title="Interferometro di Michelson">
+</iframe>
 </div></div>
 </section>
 <section id="trasduttore-con-fotodiodo-a-quadrante" class="slide level2">
