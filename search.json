@@ -648,7 +648,7 @@
     "href": "2-R-intro.html#facciamo-qualche-prova",
     "title": "Introduzione al Linguaggio R",
     "section": "Facciamo qualche prova",
-    "text": "Facciamo qualche prova\n\n\n(v1 &lt;- c(7, 2.5, 3, 1:10))\nv1[c(3,7,2)]"
+    "text": "Facciamo qualche prova"
   },
   {
     "objectID": "2-R-intro.html#introspezione",
@@ -697,7 +697,7 @@
     "href": "2-R-intro.html#facciamo-qualche-prova-1",
     "title": "Introduzione al Linguaggio R",
     "section": "Facciamo qualche prova",
-    "text": "Facciamo qualche prova\n\n\nv1 &lt;- c(10, 2, 7.5, 3)\nv2 &lt;- 1:10\nv1[c(2,4,1)]\nv2[v2 %% 2 == 0]\n\nm1 &lt;- matrix(1:4, nrow = 2, byrow=T)\nm2 &lt;- matrix(c(2, 3, 1, 7, 5, 1), nrow = 2, byrow=T)\nm1 * m2 # Errore!\n\n\n\n\n\n\n\n\nConsiglio\n\n\nCercare nell’help in linea funzioni come %*%"
+    "text": "Facciamo qualche prova\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsiglio\n\n\nCercare nell’help in linea funzioni come %*%"
   },
   {
     "objectID": "2-R-intro.html#funzioni",
@@ -725,7 +725,7 @@
     "href": "2-R-intro.html#esercizio",
     "title": "Introduzione al Linguaggio R",
     "section": "Esercizio",
-    "text": "Esercizio\n\nAssegnazioneSoluzione\n\n\nScrivere una funzione sum_odd che sommi tutti gli elementi con indice dispari di un vettore numerico. La funzione deve avere un argomento x e restituire la somma di tutti gli elementi di x, usando un ciclo for.\n\n\nsum_odd &lt;-function(x) {\n  # scrivi qui il codice\n}\n\nsum_odd(1:10)\n\n\n\n\n\n\n\n\nAvviso\n\n\nL’uso del ciclo for è sconsigliato in R (perché è più lento di alcune alternative), ma è utile per esercitarsi con il controllo di flusso.\n\n\n\n\n\n\n\nsum_odd &lt;-function(x) {\n  odd &lt;- x[c(T, F)]\n  sum &lt;- 0\n  for (e in odd) {\n    sum &lt;- sum + e\n  }\n  return(sum)\n}\n\nsum_odd(1:10)"
+    "text": "Esercizio\n\nAssegnazioneSoluzione\n\n\nScrivere una funzione sum_odd che sommi tutti gli elementi con indice dispari di un vettore numerico. La funzione deve avere un argomento x e restituire la somma di tutti gli elementi di x, usando un ciclo for.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAvviso\n\n\nL’uso del ciclo for è sconsigliato in R (perché è più lento di alcune alternative), ma è utile per esercitarsi con il controllo di flusso."
   },
   {
     "objectID": "2-R-intro.html#argomenti-delle-funzioni",
@@ -760,7 +760,7 @@
     "href": "2-R-intro.html#esercizio-1",
     "title": "Introduzione al Linguaggio R",
     "section": "Esercizio",
-    "text": "Esercizio\nDal data frame mtcars, estrarre le righe corrispondenti ai veicoli con cilindrata (disp) maggiore di 200 e peso minore di 3.5 tonnellate (wt)\n\nhead(mtcars)"
+    "text": "Esercizio\nDal data frame mtcars, estrarre le righe corrispondenti ai veicoli con cilindrata (disp) maggiore di 200 e peso minore di 3.5 tonnellate (wt)"
   },
   {
     "objectID": "2-R-intro.html#liste",
@@ -809,7 +809,7 @@
     "href": "2-R-intro.html#esercizio-2",
     "title": "Introduzione al Linguaggio R",
     "section": "Esercizio",
-    "text": "Esercizio\nRiordinare il dataframe df in maniera casuale:\n\n\ndf &lt;- expand.grid(A=1:3, B=LETTERS[1:2])\n# aggiungo una colonna di numeri casuali\n# riordino df per quella colonna\ndf # stampo df"
+    "text": "Esercizio\nRiordinare il dataframe df in maniera casuale:"
   },
   {
     "objectID": "2-R-intro.html#aggregazione",
@@ -2041,7 +2041,7 @@
     "href": "1-statistica.html#calcolatrice",
     "title": "Statistica Descrittiva e Inferenziale",
     "section": "Calcolatrice",
-    "text": "Calcolatrice\nUsare il riquadro sottostante per risolvere l’esercizio precedente (provare anche con la tabella dei quantili)\n\nEsercizioSuggerimentoSoluzione\n\n\n\n\n#| exercise: \"t_test\"\nn1=10; n2=10\ny1=13.59213; y2=10.30381\ns1=4.33921; s2=2.24027\n# calcolo probabilità dalla T di Student:\npt(1.38, df=n1, lower.tail=F)\n# calcolo probabilità dalla F:\npf(2, n1, n2, lower.tail=F)\n\n\n\n\n\nCalcolare prima \\(F_0\\) per un test della varianza e il suo \\(p\\)-value, ricordando che il test della varianza è a due lati.\nPoi calcolare \\(t_0\\) e il suo \\(p\\)-value, tilizzando il test di Student o di Welch a seconda del risultato del test della varianza.\nNota: la radice quadrata si ottiene con sqrt(x), l’elevamento a potenza con x^y.\n\n\n\n\nSoluzione. \n\n#| setup: true\n#| exercise: \"t_test_sol\"\nn1=10; n2=10\ny1=13.59213; y2=10.30381\ns1=4.33921; s2=2.24027\n\n\n#| exercise: \"t_test_sol\"\n# verifico la omoschedasticità:\nF0=s1^2/s2^2\n2*pf(F0, n1-1, n2-1, lower.tail=F)\n# p-value è &gt; 0.05, quindi campioni omoschedastici\n\nSp = sqrt(((n1-1)*s1^2 + (n2-1)*s2^2)/(n1+n2-2))\nT0 = (y1-y2)/(Sp*sqrt(1/n1 + 1/n2))\n2*pt(T0, df=n1+n2-2, lower.tail=F)\n# quindi µ1 != µ2, con p-value = 0.0473"
+    "text": "Calcolatrice\nUsare il riquadro sottostante per risolvere l’esercizio precedente (provare anche con la tabella dei quantili)\n\nEsercizioSuggerimentoSoluzione\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCalcolare prima \\(F_0\\) per un test della varianza e il suo \\(p\\)-value, ricordando che il test della varianza è a due lati.\nPoi calcolare \\(t_0\\) e il suo \\(p\\)-value, tilizzando il test di Student o di Welch a seconda del risultato del test della varianza.\nNota: la radice quadrata si ottiene con sqrt(x), l’elevamento a potenza con x^y."
   },
   {
     "objectID": "1-statistica.html#anomalie",
