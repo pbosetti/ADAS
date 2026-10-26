@@ -16,6 +16,9 @@ format:
     number-sections: true 
   pbosetti_teaching_tmpl-revealjs:
     number-sections: false
+resources:
+  - images/linear-pot.html
+  - images/interferometer.html
 revealjs-plugins:
   - tabset
 ---
@@ -59,7 +62,7 @@ Questo contenuto è anche disponibile in formato [PDF {{< bi file-earmark-pdf-fi
      Quarto launch headless Chrome to rasterise the graph for the PDF pass,
      which hangs intermittently on CI runners and stalls the whole build.
      Regenerate with: dot -Tsvg images/catena.dot -o images/catena.svg -->
-![](images/catena.svg){width=260}
+![Catena di misura](images/catena.svg){width=260}
 :::
 :::
 
@@ -103,7 +106,7 @@ Sfruttando la **variazione di induttanza** che risulta da uno spostamento dell'a
 :::
 
 :::column
-![Induttanza variabile](images/induttore.png){width=600}
+![Induttanza variabile](images/induttore.png){width=400}
 :::
 :::
 
@@ -128,8 +131,11 @@ Sfruttando la **variazione di induttanza** che risulta da uno spostamento dell'a
 ## Trasduttore resistivo
 
 :::columns
-:::column
-Sfrutta una variazione di resistenza in un circuito parallelo $R_{T} = (1-\Delta)R_v \frac{1}{\Delta R_v + R_{sc}}$
+:::{.column width="40%"}
+Sfrutta una variazione di resistenza in un circuito parallelo
+$$
+R_{T} = (1-\Delta)R_v \frac{1}{\Delta R_v + R_{sc}}
+$$
 
 * economico
 * corse discretamente lunghe
@@ -137,9 +143,17 @@ Sfrutta una variazione di resistenza in un circuito parallelo $R_{T} = (1-\Delta
 * misura rumorosa
 :::
 
-:::column
+:::{.column width="60%"}
+
+::: {.content-visible when-format="revealjs"}
+<!-- built by anatomy/linear-pot/build.mjs --light --out images/linear-pot.html -->
+<iframe src="images/linear-pot.html" width="100%" height="560" style="border:0" title="Trasduttore resistivo lineare e oscilloscopio"></iframe>
+:::
+
+::: {.content-hidden when-format="revealjs"}
 ![](images/resistore1.jpg){width=600}
 ![](images/resistore2.jpg)
+:::
 
 :::
 :::
@@ -148,7 +162,7 @@ Sfrutta una variazione di resistenza in un circuito parallelo $R_{T} = (1-\Delta
 ## Trasduttore interferometrico
 
 :::columns
-:::column
+:::{.column width="40%"}
 È basato su un conteggio di oscillazioni su una misura di intensità luminosa
 
 * Risoluzione almeno nanometrica, dell'ordine della lunghezza d'onda
@@ -156,9 +170,10 @@ Sfrutta una variazione di resistenza in un circuito parallelo $R_{T} = (1-\Delta
 * Sensibile alle proprietà ottiche del mezzo (funzione della temperatura e umidità, se è aria)
 :::
 
-:::column
-::: {.content-visible when-format="html"}
-![Interferometria laser](images/interferometry.gif)
+:::{.column width="60%"}
+::: {.content-visible when-format="revealjs"}
+<!-- built by anatomy/interferometer/build.mjs --light --out images/interferometer.html -->
+<iframe src="images/interferometer.html" width="100%" height="550" style="border:0" title="Interferometro di Michelson"></iframe>
 :::
 ::: {.content-visible when-format="pdf"}
 ![Interferometria laser](images/interferometry.png)
