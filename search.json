@@ -84,6 +84,13 @@
     "text": "Bilancia analitica\n\n\n\nConcettualmente semplice\nPuò essere puramente meccanica\nPrecisione dipende dalla qualità delle lavorazioni\n\n\n\n\n\nBilance analitiche"
   },
   {
+    "objectID": "8-strumenti.html#bilancia-a-pendolo",
+    "href": "8-strumenti.html#bilancia-a-pendolo",
+    "title": "Strumenti di misura",
+    "section": "Bilancia a pendolo",
+    "text": "Bilancia a pendolo\n\n\n\nIl carico tira la traversa verso il basso: i nastri si svolgono dai settori e i pendoli ruotano verso l’esterno\nEquilibrio: \\(\\frac{F}{2}R = m g L \\sin\\varphi\\)\nUna cremagliera sulla traversa fa ruotare pignone e indice\nCon settori circolari la scala non è lineare (divisioni più larghe verso il fondo scala)"
+  },
+  {
     "objectID": "8-strumenti.html#trasduttore-accelerometrico",
     "href": "8-strumenti.html#trasduttore-accelerometrico",
     "title": "Strumenti di misura",
@@ -739,7 +746,7 @@
     "href": "2-R-intro.html#differenza-tra---e",
     "title": "Introduzione al Linguaggio R",
     "section": "Differenza tra <- e =",
-    "text": "Differenza tra &lt;- e =\n\nL’operatore = come assegnazione è valido solo al top-level\nL’operatore &lt;- è valido ovunque, anche come argomento di funzione:\n\n\nsystem.time(m &lt;- mean(1:1E6))\n\n   user  system elapsed \n  0.001   0.000   0.001 \n\nm\n\n[1] 500000.5"
+    "text": "Differenza tra &lt;- e =\n\nL’operatore = come assegnazione è valido solo al top-level\nL’operatore &lt;- è valido ovunque, anche come argomento di funzione:\n\n\nsystem.time(m &lt;- mean(1:1E6))\n\n   user  system elapsed \n  0.002   0.000   0.001 \n\nm\n\n[1] 500000.5"
   },
   {
     "objectID": "2-R-intro.html#dataframe",
@@ -1509,7 +1516,7 @@
     "href": "index.html#contenuti-del-corso",
     "title": "Analisi Dati e Statistica",
     "section": "Contenuti del corso",
-    "text": "Contenuti del corso\n\nIntroduzione al corso\nStatistica descrittiva e inferenziale (PDF )\nIntroduzione a R (PDF )\nRegressione (PDF )\nBootstrap (PDF )\nMisura, incertezza, taratura (PDF )\nDesign of Experiments (PDF )\nSerie temporali (PDF ) (opzionale per l’A.A. 2025-26)\nStrumenti di misura (PDF )"
+    "text": "Contenuti del corso\n\nIntroduzione al corso\nStatistica descrittiva e inferenziale (PDF )\nIntroduzione a R (PDF )\nRegressione (PDF )\nBootstrap (PDF )\nMisura, incertezza, taratura (PDF )\nDesign of Experiments (PDF )\nSerie temporali (PDF ) (opzionale dopo l’A.A. 2024-25)\nStrumenti di misura (PDF )"
   },
   {
     "objectID": "index.html#uso-delle-slide",
