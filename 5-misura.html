@@ -156,7 +156,7 @@ Paolo Bosetti
     </div>
 </div>
 
-  <p class="date"><em>Ultimo aggiornamento:</em> 29/10/2026</p>
+  <p class="date"><em>Ultimo aggiornamento:</em> 30/10/2026</p>
 </section>
 <section id="link-alle-slide" class="title-slide slide level1 center">
 <h1>Link alle slide</h1>
@@ -292,6 +292,7 @@ u_{x\mathrm{rel}}=\frac{u_x}{|\bar x|}
 <div class="title">
 <p>Definizioni</p>
 </div>
+<div class="smaller">
 <p>Ricordando che l’<strong>intervallo di confidenza</strong> è definito come <span class="math display">\[
 P\left(-t_{n-1,\alpha/2}\leq\frac{|\bar x - \mu_0|}{s_x/\sqrt{n}}\leq t_{n-1,\alpha/2}\right) = 1-\alpha
 \]</span> risulta che l’intervallo <span class="math inline">\(\bar x \pm t_{\alpha/2,n-1}u_x\)</span> contiene il valore atteso di <span class="math inline">\(x\)</span> con una confidenza <span class="math inline">\(1-\alpha\)</span></p>
@@ -303,6 +304,7 @@ P\left(-t_{n-1,\alpha/2}\leq\frac{|\bar x - \mu_0|}{s_x/\sqrt{n}}\leq t_{n-1,\al
 U_x=t_{\alpha/2,n-1}\frac{s_x}{\sqrt{n}}=t_{\alpha/2,n-1}u_x = k_{n-1}u_x
 \]</span></p>
 <p>Il termine <span class="math inline">\(k_{n-1}\)</span> è chiamato <strong>fattore di copertura</strong>, e dipende solo dalla dimensione del campione (è il quantile della distribuzione T di Student).</p>
+</div>
 </div>
 </section>
 <section id="fattore-di-copertura" class="slide level2">
@@ -422,6 +424,7 @@ U_x=t_{\alpha/2,n-1}\frac{s_x}{\sqrt{n}}=t_{\alpha/2,n-1}u_x = k_{n-1}u_x
 </div></aside></section>
 <section id="taratura-2" class="slide level2">
 <h2>Taratura</h2>
+<div class="smaller">
 <p>Una <strong>taratura statica</strong> si sviluppa quindi su quattro passaggi:</p>
 <ol type="1">
 <li><strong>sviluppo del modello dello strumento</strong>: mediante analisi dei principi fisici si definisce la caratteristica statica come relazione (analitica, numerica o mista) tra ingresso e uscita. Idealmente, un modello completo comprende anche gli <strong>ingressi di disturbo</strong></li>
@@ -429,12 +432,25 @@ U_x=t_{\alpha/2,n-1}\frac{s_x}{\sqrt{n}}=t_{\alpha/2,n-1}u_x = k_{n-1}u_x
 <li><strong>regressione</strong>: si identificano i parametri del modello</li>
 <li><strong>validazione del modello</strong>: si verifica l’adeguatezza del modello regredito mediante analisi dei residui</li>
 </ol>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Importante</strong></p>
+</div>
+<div class="callout-content">
 <p>La taratura deve anche definire l’<strong>incertezza</strong> dello strumento, dovuta:</p>
 <ul>
 <li>al modello (la <em>forma</em> della caratteristica statica)</li>
 <li>ai parametri del modello</li>
 <li>alla stima del misurando (dovuta a ingressi di disturbo)</li>
 </ul>
+</div>
+</div>
+</div>
 </section>
 <section id="ingressi-di-disturbo" class="slide level2">
 <h2>Ingressi di disturbo</h2>
@@ -452,7 +468,7 @@ U_x=t_{\alpha/2,n-1}\frac{s_x}{\sqrt{n}}=t_{\alpha/2,n-1}u_x = k_{n-1}u_x
 <aside><div>
 <p>L’incertezza si riferisce solo alla componente aleatoria e non prevedibile della misura; si assume che ogni componente di deviazione sistematica sia già stato corretto</p>
 </div></aside></section>
-<section id="esempio-dinamometro-a-mensola" class="slide level2">
+<section id="esempio-dinamometro-a-mensola" class="slide level2 smaller">
 <h2>Esempio: dinamometro a mensola</h2>
 <div class="columns">
 <div class="column">
@@ -463,6 +479,9 @@ U_x=t_{\alpha/2,n-1}\frac{s_x}{\sqrt{n}}=t_{\alpha/2,n-1}u_x = k_{n-1}u_x
 <li>un circuito elettrico con voltmetro per convertire la variazione di resistenza in variazione di corrente, mediante <strong>amplificazione</strong></li>
 </ul>
 <p>Il modello dello strumento fornisce:</p>
+<p><span class="math display">\[
+V=3/2GV_i\frac{lG_F}{EBH^2}F+V_0 = V_0+ KF
+\]</span></p>
 </div><div class="column">
 <div class="panel-tabset" style="text-align: center;">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Dinamometro</a></li><li><a href="#tabset-2-2">Amplificatore</a></li></ul>
@@ -476,9 +495,6 @@ U_x=t_{\alpha/2,n-1}\frac{s_x}{\sqrt{n}}=t_{\alpha/2,n-1}u_x = k_{n-1}u_x
 </div>
 </div>
 </div></div>
-<p><span class="math display">\[
-V=3/2GV_i\frac{lG_F}{EBH^2}F+V_0 = V_0+ KF
-\]</span></p>
 </section>
 <section id="esempio-dinamometro-a-mensola-1" class="slide level2">
 <h2>Esempio: dinamometro a mensola</h2>
@@ -595,14 +611,26 @@ V=3/2GV_i\frac{lG_F}{EBH^2}F+V_0 = V_0+ KF
 <aside><div>
 <p>I residui non sono del tutto privi di pattern (andamento a “M”). Tuttavia, aumentando il grado della regressione si può raggiungere un livello (grado 6) in cui i residui sono effettivamente privi di pattern, ma ciò tuttavia non invalida quanto sopra detto</p>
 </div></aside></section>
-<section id="taratura-del-dinamometro-con-casualizzazione" class="slide level2">
+<section id="taratura-del-dinamometro-con-casualizzazione" class="slide level2 smaller">
 <h2>Taratura del dinamometro <span class="bgreen">(con casualizzazione)</span></h2>
 <div class="columns">
 <div class="column">
 <p>Rivediamo cosa sarebbe successo raccogliendo le coppie <span class="math inline">\((m_i,y_i)\)</span> in <strong>ordine casuale</strong></p>
 <p>In questo caso l’effetto di aumento della temperatura è nullo sulle coppie raccolte (con valori casuali di <span class="math inline">\(m_i\)</span>!) prima di 4 ore; successivamente questo effetto si distribuisce casualmente su tutti i valori del misurando (diventa un ingresso interferente)</p>
 <p>La regressione lineare di primo grado questa volta è adatta, anche se la varianza non è costante</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ma attenzione!</strong></p>
+</div>
+<div class="callout-content">
 <p>Tuttavia, osservando i <strong>residui in funzione del tempo</strong> si nota che a circa 4 ore inizia a succedere qualcosa che fa aumentare i residui</p>
+</div>
+</div>
+</div>
 </div><div class="column">
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Regressione</a></li><li><a href="#tabset-5-2">Residui (F)</a></li><li><a href="#tabset-5-3">Residui (t)</a></li></ul>
@@ -747,7 +775,7 @@ u_y = \sqrt{\sum_{i=1}^n \left(\frac{\partial f}{\partial x_i}\right)^2 u_i^2}
 <aside><div>
 <p>L’ipotesi che le <span class="math inline">\(x_i\)</span> siano indipendenti <strong>va verificata</strong>, ad esempio con un test di correlazione</p>
 </div></aside></section>
-<section id="esempio-volume-di-un-cilindro" class="slide level2">
+<section id="esempio-volume-di-un-cilindro" class="slide level2 smaller">
 <h2>Esempio: volume di un cilindro</h2>
 <p>Siccome <span class="math inline">\(V=\pi r^2l\)</span> vogliamo calcolare l’incertezza standard sul volume di un cilindro, note che siano le incertezze standard su raggio, <span class="math inline">\(u_r\)</span>, e lunghezza, <span class="math inline">\(u_l\)</span></p>
 <p>Entrambe le incertezze sono calcolate da un campione di 20 elementi, entrambi con deviazione standard 2.24&nbsp;mm: <span class="math inline">\(u=s/\sqrt{n} = 2.24/\sqrt{20} = 0.5~\mathrm{mm}\)</span></p>
@@ -780,7 +808,7 @@ V=\pi \cdot 120^2 \cdot 450 = (20.4\pm0.2)\times 10^6~\mathrm{mm^3}= (20.4\pm0.2
 <section id="esempio-volume-di-un-cilindro-1" class="slide level2">
 <h2>Esempio: volume di un cilindro</h2>
 <div class="columns">
-<div class="column">
+<div class="column smaller">
 <p><strong>Primo passo</strong>: generazione dei campioni delle misure di raggio e lunghezza</p>
 <p>Dopo uno studio della tecnologia di produzione del cilindro, si accerta che</p>
 <ul>
@@ -788,6 +816,19 @@ V=\pi \cdot 120^2 \cdot 450 = (20.4\pm0.2)\times 10^6~\mathrm{mm^3}= (20.4\pm0.2
 <li>la distribuzione della lunghezza è gobba, con media 450.0 mm e deviazione standard 0.5 mm</li>
 </ul>
 <p>Si generano due campioni da 10&nbsp;000 elementi ciascuno</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Importante</strong></p>
+</div>
+<div class="callout-content">
+<p>Dato che generiamo un’elevata quantità di campioni, secondo la GUM assumiamo che <strong>l’incertezza standard coincida con la deviazione standard</strong></p>
+</div>
+</div>
+</div>
 </div><div class="column">
 <div class="panel-tabset">
 <ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Raggio</a></li><li><a href="#tabset-7-2">Lunghezza</a></li></ul>
@@ -817,7 +858,6 @@ V=\pi \cdot 120^2 \cdot 450 = (20.4\pm0.2)\times 10^6~\mathrm{mm^3}= (20.4\pm0.2
 </div>
 </div>
 </div></div>
-<p>Dato che generiamo un’elevata quantità di campioni, secondo la GUM assumiamo che <strong>l’incertezza standard coincida con la deviazione standard</strong></p>
 </section>
 <section id="esempio-volume-di-un-cilindro-2" class="slide level2">
 <h2>Esempio: volume di un cilindro</h2>

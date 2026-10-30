@@ -361,7 +361,7 @@
     "href": "5-misura.html#norma-gum-isoiec-98-32008-2",
     "title": "Misura, Incertezza, Taratura",
     "section": "Norma GUM (ISO/IEC 98-3:2008)",
-    "text": "Norma GUM (ISO/IEC 98-3:2008)\n\n\nDefinizioni\n\nRicordando che l’intervallo di confidenza è definito come \\[\nP\\left(-t_{n-1,\\alpha/2}\\leq\\frac{|\\bar x - \\mu_0|}{s_x/\\sqrt{n}}\\leq t_{n-1,\\alpha/2}\\right) = 1-\\alpha\n\\] risulta che l’intervallo \\(\\bar x \\pm t_{\\alpha/2,n-1}u_x\\) contiene il valore atteso di \\(x\\) con una confidenza \\(1-\\alpha\\)\nQuindi la GUM definisce anche:\n\nL’incertezza estesa come la semi-ampiezza dell’intervallo di confidenza su \\(\\bar x\\):\n\n\\[\nU_x=t_{\\alpha/2,n-1}\\frac{s_x}{\\sqrt{n}}=t_{\\alpha/2,n-1}u_x = k_{n-1}u_x\n\\]\nIl termine \\(k_{n-1}\\) è chiamato fattore di copertura, e dipende solo dalla dimensione del campione (è il quantile della distribuzione T di Student)."
+    "text": "Norma GUM (ISO/IEC 98-3:2008)\n\n\nDefinizioni\n\n\nRicordando che l’intervallo di confidenza è definito come \\[\nP\\left(-t_{n-1,\\alpha/2}\\leq\\frac{|\\bar x - \\mu_0|}{s_x/\\sqrt{n}}\\leq t_{n-1,\\alpha/2}\\right) = 1-\\alpha\n\\] risulta che l’intervallo \\(\\bar x \\pm t_{\\alpha/2,n-1}u_x\\) contiene il valore atteso di \\(x\\) con una confidenza \\(1-\\alpha\\)\nQuindi la GUM definisce anche:\n\nL’incertezza estesa come la semi-ampiezza dell’intervallo di confidenza su \\(\\bar x\\):\n\n\\[\nU_x=t_{\\alpha/2,n-1}\\frac{s_x}{\\sqrt{n}}=t_{\\alpha/2,n-1}u_x = k_{n-1}u_x\n\\]\nIl termine \\(k_{n-1}\\) è chiamato fattore di copertura, e dipende solo dalla dimensione del campione (è il quantile della distribuzione T di Student)."
   },
   {
     "objectID": "5-misura.html#fattore-di-copertura",
@@ -389,7 +389,7 @@
     "href": "5-misura.html#taratura-2",
     "title": "Misura, Incertezza, Taratura",
     "section": "Taratura",
-    "text": "Taratura\nUna taratura statica si sviluppa quindi su quattro passaggi:\n\nsviluppo del modello dello strumento: mediante analisi dei principi fisici si definisce la caratteristica statica come relazione (analitica, numerica o mista) tra ingresso e uscita. Idealmente, un modello completo comprende anche gli ingressi di disturbo\nraccolta dei dati di taratura: una campagna sperimentale fornisce le coppie \\((m_i, y_i)\\), che vanno raccolte con \\(m\\) in ordine casuale\nregressione: si identificano i parametri del modello\nvalidazione del modello: si verifica l’adeguatezza del modello regredito mediante analisi dei residui\n\nLa taratura deve anche definire l’incertezza dello strumento, dovuta:\n\nal modello (la forma della caratteristica statica)\nai parametri del modello\nalla stima del misurando (dovuta a ingressi di disturbo)"
+    "text": "Taratura\n\nUna taratura statica si sviluppa quindi su quattro passaggi:\n\nsviluppo del modello dello strumento: mediante analisi dei principi fisici si definisce la caratteristica statica come relazione (analitica, numerica o mista) tra ingresso e uscita. Idealmente, un modello completo comprende anche gli ingressi di disturbo\nraccolta dei dati di taratura: una campagna sperimentale fornisce le coppie \\((m_i, y_i)\\), che vanno raccolte con \\(m\\) in ordine casuale\nregressione: si identificano i parametri del modello\nvalidazione del modello: si verifica l’adeguatezza del modello regredito mediante analisi dei residui\n\n\n\n\n\n\n\n\nImportante\n\n\nLa taratura deve anche definire l’incertezza dello strumento, dovuta:\n\nal modello (la forma della caratteristica statica)\nai parametri del modello\nalla stima del misurando (dovuta a ingressi di disturbo)"
   },
   {
     "objectID": "5-misura.html#ingressi-di-disturbo",
@@ -403,7 +403,7 @@
     "href": "5-misura.html#esempio-dinamometro-a-mensola",
     "title": "Misura, Incertezza, Taratura",
     "section": "Esempio: dinamometro a mensola",
-    "text": "Esempio: dinamometro a mensola\n\n\nÈ uno strumento per la misura della forza peso che sfrutta:\n\nl’elasticità di una trave snella per convertire una forza in una deformazione\nun estensimetro per convertire una deformazione in una variazione di resistenza\nun circuito elettrico con voltmetro per convertire la variazione di resistenza in variazione di corrente, mediante amplificazione\n\nIl modello dello strumento fornisce:\n\n\nDinamometroAmplificatore\n\n\n\n\n\n\n\n\n\n\n\\[\nV=3/2GV_i\\frac{lG_F}{EBH^2}F+V_0 = V_0+ KF\n\\]"
+    "text": "Esempio: dinamometro a mensola\n\n\nÈ uno strumento per la misura della forza peso che sfrutta:\n\nl’elasticità di una trave snella per convertire una forza in una deformazione\nun estensimetro per convertire una deformazione in una variazione di resistenza\nun circuito elettrico con voltmetro per convertire la variazione di resistenza in variazione di corrente, mediante amplificazione\n\nIl modello dello strumento fornisce:\n\\[\nV=3/2GV_i\\frac{lG_F}{EBH^2}F+V_0 = V_0+ KF\n\\]\n\n\nDinamometroAmplificatore"
   },
   {
     "objectID": "5-misura.html#esempio-dinamometro-a-mensola-1",
@@ -445,7 +445,7 @@
     "href": "5-misura.html#taratura-del-dinamometro-con-casualizzazione",
     "title": "Misura, Incertezza, Taratura",
     "section": "Taratura del dinamometro (con casualizzazione)",
-    "text": "Taratura del dinamometro (con casualizzazione)\n\n\nRivediamo cosa sarebbe successo raccogliendo le coppie \\((m_i,y_i)\\) in ordine casuale\nIn questo caso l’effetto di aumento della temperatura è nullo sulle coppie raccolte (con valori casuali di \\(m_i\\)!) prima di 4 ore; successivamente questo effetto si distribuisce casualmente su tutti i valori del misurando (diventa un ingresso interferente)\nLa regressione lineare di primo grado questa volta è adatta, anche se la varianza non è costante\nTuttavia, osservando i residui in funzione del tempo si nota che a circa 4 ore inizia a succedere qualcosa che fa aumentare i residui\n\n\nRegressioneResidui (F)Residui (t)"
+    "text": "Taratura del dinamometro (con casualizzazione)\n\n\nRivediamo cosa sarebbe successo raccogliendo le coppie \\((m_i,y_i)\\) in ordine casuale\nIn questo caso l’effetto di aumento della temperatura è nullo sulle coppie raccolte (con valori casuali di \\(m_i\\)!) prima di 4 ore; successivamente questo effetto si distribuisce casualmente su tutti i valori del misurando (diventa un ingresso interferente)\nLa regressione lineare di primo grado questa volta è adatta, anche se la varianza non è costante\n\n\n\n\n\n\nMa attenzione!\n\n\nTuttavia, osservando i residui in funzione del tempo si nota che a circa 4 ore inizia a succedere qualcosa che fa aumentare i residui\n\n\n\n\n\nRegressioneResidui (F)Residui (t)"
   },
   {
     "objectID": "5-misura.html#taratura-del-dinamometro-con-casualizzazione-1",
@@ -508,7 +508,7 @@
     "href": "5-misura.html#esempio-volume-di-un-cilindro-1",
     "title": "Misura, Incertezza, Taratura",
     "section": "Esempio: volume di un cilindro",
-    "text": "Esempio: volume di un cilindro\n\n\nPrimo passo: generazione dei campioni delle misure di raggio e lunghezza\nDopo uno studio della tecnologia di produzione del cilindro, si accerta che\n\nla distribuzione del raggio è simmetrica, con media 120.0 mm e deviazione standard 0.5 mm\nla distribuzione della lunghezza è gobba, con media 450.0 mm e deviazione standard 0.5 mm\n\nSi generano due campioni da 10 000 elementi ciascuno\n\n\nRaggioLunghezza\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDato che generiamo un’elevata quantità di campioni, secondo la GUM assumiamo che l’incertezza standard coincida con la deviazione standard"
+    "text": "Esempio: volume di un cilindro\n\n\nPrimo passo: generazione dei campioni delle misure di raggio e lunghezza\nDopo uno studio della tecnologia di produzione del cilindro, si accerta che\n\nla distribuzione del raggio è simmetrica, con media 120.0 mm e deviazione standard 0.5 mm\nla distribuzione della lunghezza è gobba, con media 450.0 mm e deviazione standard 0.5 mm\n\nSi generano due campioni da 10 000 elementi ciascuno\n\n\n\n\n\n\nImportante\n\n\nDato che generiamo un’elevata quantità di campioni, secondo la GUM assumiamo che l’incertezza standard coincida con la deviazione standard\n\n\n\n\n\nRaggioLunghezza"
   },
   {
     "objectID": "5-misura.html#esempio-volume-di-un-cilindro-2",
@@ -1285,7 +1285,7 @@
     "href": "4-bootstrap.html#tecniche-di-bootstrap",
     "title": "Tecniche di Bootstrap",
     "section": "Tecniche di Bootstrap",
-    "text": "Tecniche di Bootstrap\nScopo: analizzare una particolare statistica \\(\\hat{\\vartheta}\\) simulando nuovi campioni a partire da un campione originario per effettuare dell’inferenza sulla statistica in questione\nSi punta a inferire da \\(\\hat\\vartheta\\) il corrispondente parametro \\(\\vartheta\\) della distribuzione.\nLa simulazione può essere fatta in due modi:\n\nBootstrap non-parametrico: i campioni bootstrap vengono generati dal campione originario mediante campionamento con reinserimento\nBootstrap parametrico i campioni bootstrap vengono generati da distribuzioni aventi una forma nota (e assunta corretta) e parametri stimati dal campione originario (tipicamente media e varianza).\n\n\n\nUn parametro in statistica, è una costante da cui dipende la forma di una distribuzione: ad esempio, la distribuzione \\(\\mathcal{N}(\\mu, \\sigma^2)\\) è una distribuzione a due parametri: il valore atteso \\(\\mu\\) e la varianza \\(\\sigma^2\\)"
+    "text": "Tecniche di Bootstrap\nScopo: analizzare una particolare statistica \\(\\hat{\\vartheta}\\) simulando nuovi campioni a partire da un campione originario per effettuare dell’inferenza sulla statistica in questione\nSi punta a inferire da \\(\\hat\\vartheta\\) il corrispondente parametro \\(\\vartheta\\) della distribuzione.\nLa simulazione può essere fatta in due modi:\n\nBootstrap non-parametrico: i campioni bootstrap vengono generati dal campione originario mediante campionamento con reinserimento\nBootstrap parametrico i campioni bootstrap vengono generati da distribuzioni aventi una forma nota (e assunta corretta) e parametri stimati dal campione originario (tipicamente media e varianza).\n\n\n\n\n\n\n\nNota\n\n\nUn parametro in statistica, è una costante da cui dipende la forma di una distribuzione: ad esempio, la distribuzione \\(\\mathcal{N}(\\mu, \\sigma^2)\\) è una distribuzione a due parametri: il valore atteso \\(\\mu\\) e la varianza \\(\\sigma^2\\)"
   },
   {
     "objectID": "4-bootstrap.html#tecniche-di-bootstrap-1",
@@ -1337,25 +1337,25 @@
     "text": "Boostrap Non-Parametrico\nSi assume che la distribuzione del campione sia ignota\nSi generano \\(R\\) campioni a partire dal campione originario mediante campionamento con reinserimento\nDato che tutti gli elementi hanno la stessa probabilità di essere estratti dal campione originario, ogni campione di boostrap mantiene la stessa distribuzione (incognita)\nSe \\(R\\) è grande (\\(R &gt; 10000\\)) è possibile studiare la distribuzione del parametro in studio sui campioni di bootstrap per inferirne le proprietà\nIn particolare sarà possibile calcolarne:\n\nil valore atteso\nla varianza\nl’intervallo di confidenza"
   },
   {
-    "objectID": "4-bootstrap.html#procedura-generale",
-    "href": "4-bootstrap.html#procedura-generale",
+    "objectID": "4-bootstrap.html#boostrap-non-parametrico-1",
+    "href": "4-bootstrap.html#boostrap-non-parametrico-1",
     "title": "Tecniche di Bootstrap",
-    "section": "Procedura Generale",
-    "text": "Procedura Generale\n\n\nProcedura\n\nSe \\(x\\) è un campione di \\(n\\) elementi provenienti da una distribuzione ignota:\n\nsi ricampiona \\(x\\) con reinserimento, ottenendo \\(x_i^*=\\left&lt;x^*_{i,1}, x^*_{i,2},\\dots,x^*_{1,n}\\right&gt;\\)\nsi calcola la statistica \\(\\hat\\theta^*_1 = s(x_1^*)\\)\nsi ripetono i primi due passi \\(R\\) volte, ottenendo un campione di \\(\\hat \\theta^*_i,~i=1, 2, \\dots, R\\)\n\nLa distribuzione di bootstrap consiste quindi di \\(R\\) stime di \\(\\theta\\) più la stima del campione originale \\(\\hat \\theta\\), cioè si ha il campione di \\(R+1\\) stime \\(\\left&lt;\\hat\\theta,\\hat\\theta^*_1,\\hat\\theta^*_2,\\dots,,\\hat\\theta^*_R\\right&gt;\\).\nSi possono ora stimare le proprietà del parametro \\(\\theta\\) sulla base del campione di bootstrap:\n\nil valore atteso di \\(\\theta\\) è stimata con la media del campione di bootstrap\nla varianza di \\(\\theta\\) è stimata con la varianza del campione di bootstrap\nl’intervallo di confidenza di \\(\\theta\\) è stimato dai quantili del campione di boostrap"
+    "section": "Boostrap Non-Parametrico",
+    "text": "Boostrap Non-Parametrico\n\n\nProcedura\n\n\nSe \\(x\\) è un campione di \\(n\\) elementi provenienti da una distribuzione ignota:\n\nsi ricampiona \\(x\\) con reinserimento, ottenendo \\(x_i^*=\\left&lt;x^*_{i,1}, x^*_{i,2},\\dots,x^*_{1,n}\\right&gt;\\)\nsi calcola la statistica \\(\\hat\\theta^*_1 = s(x_1^*)\\)\nsi ripetono i primi due passi \\(R\\) volte, ottenendo un campione di \\(\\hat \\theta^*_i,~i=1, 2, \\dots, R\\)\n\nLa distribuzione di bootstrap consiste quindi di \\(R\\) stime di \\(\\theta\\) più la stima del campione originale \\(\\hat \\theta\\), cioè si ha il campione di \\(R+1\\) stime \\(\\left&lt;\\hat\\theta,\\hat\\theta^*_1,\\hat\\theta^*_2,\\dots,,\\hat\\theta^*_R\\right&gt;\\).\nSi possono ora stimare le proprietà del parametro \\(\\theta\\) sulla base del campione di bootstrap:\n\nil valore atteso di \\(\\theta\\) è stimata con la media del campione di bootstrap\nla varianza di \\(\\theta\\) è stimata con la varianza del campione di bootstrap\nl’intervallo di confidenza di \\(\\theta\\) è stimato dai quantili del campione di boostrap"
   },
   {
     "objectID": "4-bootstrap.html#esempio",
     "href": "4-bootstrap.html#esempio",
     "title": "Tecniche di Bootstrap",
     "section": "Esempio",
-    "text": "Esempio\n\n\nConsideriamo un campione di \\(n=100\\) elementi provenienti da una popolazione con distribuzione ignota\nDal grafico è evidente che la distribuzione non è normale\nVogliamo calcolare il valore atteso della media campionaria e il suo intervallo di confidenza\n\n\n\n\n\n\n\n\n\n\n\nNOTA: se valesse l’ipotesi di normalità, l’intervallo di confidenza potrebbe essere calcolato dal T-test a un campione"
+    "text": "Esempio\n\n\nConsideriamo un campione di \\(n=100\\) elementi provenienti da una popolazione con distribuzione ignota\nDal grafico è evidente che la distribuzione non è normale\nVogliamo calcolare il valore atteso della media campionaria e il suo intervallo di confidenza\n\n\n\n\n\n\nNOTA\n\n\nSe valesse l’ipotesi di normalità, l’intervallo di confidenza potrebbe essere calcolato dal T-test a un campione"
   },
   {
     "objectID": "4-bootstrap.html#esempio-1",
     "href": "4-bootstrap.html#esempio-1",
     "title": "Tecniche di Bootstrap",
     "section": "Esempio",
-    "text": "Esempio\n\n\nCostruiamo un campione di boostrap ricampionando \\(R=5\\times 10^{4}\\) volte il campione originario, calcolando \\(R+1\\) volte la media campionaria\nRiportiamo in istogramma le \\(R+1\\) stime della media\nIl valore atteso della media è \\(E(\\bar x)=\\bar{\\hat \\theta} = 10.0888\\)\nL’intervallo di confidenza per la media al 95% è calcolato dai quantili empirici di \\(\\hat \\theta\\): \\[\nL = Q^-(\\hat \\theta, (1-0.95)/2),~~~U = Q^+(\\hat \\theta, (1-0.95)/2)\n\\]\n\n\n\n\n\n\n\n\n\n\n\nNOTA: confrontando con l’intervallo calcolato dal T-test si nota che il limite inferiore è diverso: ciò è dovuto all’assimmetria della distribuzione del campione di base"
+    "text": "Esempio\n\n\nCostruiamo un campione di boostrap ricampionando \\(R=5\\times 10^{4}\\) volte il campione originario, calcolando \\(R+1\\) volte la media campionaria\nRiportiamo in istogramma le \\(R+1\\) stime della media\nIl valore atteso della media è \\(E(\\bar x)=\\bar{\\hat \\theta} = 10.0888\\)\nL’intervallo di confidenza per la media al 95% è calcolato dai quantili empirici di \\(\\hat \\theta\\): \\[\nL = Q^-(\\hat \\theta, (1-0.95)/2),~~~U = Q^+(\\hat \\theta, (1-0.95)/2)\n\\]\n\n\n\n\n\n\nNOTA\n\n\nConfrontando con l’intervallo calcolato dal T-test si nota che il limite inferiore è diverso: ciò è dovuto all’assimmetria della distribuzione del campione di base"
   },
   {
     "objectID": "4-bootstrap.html#vantaggi-della-tecnica-bootstrap",
@@ -1369,7 +1369,7 @@
     "href": "4-bootstrap.html#esempio-2",
     "title": "Tecniche di Bootstrap",
     "section": "Esempio",
-    "text": "Esempio\n\n\nSupponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la regressione non-lineare mediante il metodo dei minimi quadrati\nIl caso di interesse è la misura della posizione in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)\nIl modello da regredire è: \\[\nf =\n\\begin{cases}\nf_0 & y &lt; y_0 \\\\\na y^2 + b y + c & y \\geq y_0\n\\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nDove \\(f\\) è la forza, \\(f_0\\) è il livello della forza prima del contatto, \\(d_0\\) è pa posizione di primo contatto, e \\(b, ~c\\) parametri di forma della curva di contatto"
+    "text": "Esempio\n\n\nSupponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la regressione non-lineare mediante il metodo dei minimi quadrati\nIl caso di interesse è la misura della posizione in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)\nIl modello da regredire è: \\[\nf =\n\\begin{cases}\nf_0 & y &lt; y_0 \\\\\na y^2 + b y + c & y \\geq y_0\n\\end{cases}\n\\] Dove \\(f\\) è la forza, \\(f_0\\) è il livello della forza prima del contatto, \\(d_0\\) è pa posizione di primo contatto, e \\(b, ~c\\) parametri di forma della curva di contatto"
   },
   {
     "objectID": "4-bootstrap.html#esempio-3",

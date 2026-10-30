@@ -156,7 +156,7 @@ Paolo Bosetti
     </div>
 </div>
 
-  <p class="date"><em>Ultimo aggiornamento:</em> 29/10/2026</p>
+  <p class="date"><em>Ultimo aggiornamento:</em> 30/10/2026</p>
 </section>
 <section id="link-alle-slide" class="title-slide slide level1 center">
 <h1>Link alle slide</h1>
@@ -204,10 +204,20 @@ Paolo Bosetti
 <li><strong>Bootstrap non-parametrico</strong>: i campioni bootstrap vengono generati dal campione originario mediante campionamento con reinserimento</li>
 <li><strong>Bootstrap parametrico</strong> i campioni bootstrap vengono generati da distribuzioni aventi una forma nota (e assunta corretta) e parametri stimati dal campione originario (tipicamente media e varianza).</li>
 </ul>
-
-<aside><div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
 <p>Un <strong>parametro</strong> in statistica, è una costante da cui dipende la <em>forma</em> di una distribuzione: ad esempio, la distribuzione <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span> è una distribuzione a due parametri: il valore atteso <span class="math inline">\(\mu\)</span> e la varianza <span class="math inline">\(\sigma^2\)</span></p>
-</div></aside></section>
+</div>
+</div>
+</div>
+</section>
 <section id="tecniche-di-bootstrap-1" class="slide level2">
 <h2>Tecniche di Bootstrap</h2>
 <p>Ad esempio, supponiamo di voler <em>stimare</em> un determinato parametro <span class="math inline">\(\theta\)</span> con lo stimatore <span class="math inline">\(\hat\theta=s(x)\)</span>, dove <span class="math inline">\(s(\cdot)\)</span> è una qualche funzione dei dati campionari</p>
@@ -306,12 +316,13 @@ Paolo Bosetti
 <li>l’intervallo di confidenza</li>
 </ul>
 </section>
-<section id="procedura-generale" class="slide level2">
-<h2>Procedura Generale</h2>
+<section id="boostrap-non-parametrico-1" class="slide level2">
+<h2>Boostrap Non-Parametrico</h2>
 <div class="theorem">
 <div class="title">
 <p>Procedura</p>
 </div>
+<div class="smaller">
 <p>Se <span class="math inline">\(x\)</span> è un campione di <span class="math inline">\(n\)</span> elementi provenienti da una distribuzione ignota:</p>
 <ol type="1">
 <li>si ricampiona <span class="math inline">\(x\)</span> con reinserimento, ottenendo <span class="math inline">\(x_i^*=\left&lt;x^*_{i,1}, x^*_{i,2},\dots,x^*_{1,n}\right&gt;\)</span></li>
@@ -326,6 +337,7 @@ Paolo Bosetti
 <li>l’intervallo di confidenza di <span class="math inline">\(\theta\)</span> è stimato dai quantili del campione di boostrap</li>
 </ul>
 </div>
+</div>
 </section>
 <section id="esempio" class="slide level2">
 <h2>Esempio</h2>
@@ -334,6 +346,19 @@ Paolo Bosetti
 <p>Consideriamo un campione di <span class="math inline">\(n=100\)</span> elementi provenienti da una popolazione con distribuzione ignota</p>
 <p>Dal grafico è evidente che la <strong>distribuzione non è normale</strong></p>
 <p>Vogliamo calcolare il valore atteso della media campionaria e <strong>il suo intervallo di confidenza</strong></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>NOTA</strong></p>
+</div>
+<div class="callout-content">
+<p>Se valesse l’ipotesi di normalità, l’intervallo di confidenza potrebbe essere calcolato dal T-test a un campione</p>
+</div>
+</div>
+</div>
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
@@ -345,18 +370,30 @@ Paolo Bosetti
 </div>
 </div>
 </div></div>
-<p><strong>NOTA</strong>: se valesse l’ipotesi di normalità, l’intervallo di confidenza potrebbe essere calcolato dal T-test a un campione</p>
 </section>
 <section id="esempio-1" class="slide level2">
 <h2>Esempio</h2>
 <div class="columns">
-<div class="column">
+<div class="column smaller">
 <p>Costruiamo un campione di boostrap ricampionando <span class="math inline">\(R=5\times 10^{4}\)</span> volte il campione originario, calcolando <span class="math inline">\(R+1\)</span> volte la media campionaria</p>
 <p>Riportiamo in istogramma le <span class="math inline">\(R+1\)</span> stime della media</p>
 <p>Il <strong>valore atteso della media</strong> è <span class="math inline">\(E(\bar x)=\bar{\hat \theta} = 10.0888\)</span></p>
 <p>L’<strong>intervallo di confidenza per la media</strong> al 95% è calcolato dai quantili empirici di <span class="math inline">\(\hat \theta\)</span>: <span class="math display">\[
 L = Q^-(\hat \theta, (1-0.95)/2),~~~U = Q^+(\hat \theta, (1-0.95)/2)
 \]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>NOTA</strong></p>
+</div>
+<div class="callout-content">
+<p>Confrontando con l’intervallo calcolato dal T-test si nota che il limite inferiore è diverso: ciò è dovuto all’<strong>assimmetria della distribuzione</strong> del campione di base</p>
+</div>
+</div>
+</div>
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
@@ -368,7 +405,6 @@ L = Q^-(\hat \theta, (1-0.95)/2),~~~U = Q^+(\hat \theta, (1-0.95)/2)
 </div>
 </div>
 </div></div>
-<p><strong>NOTA</strong>: confrontando con l’intervallo calcolato dal T-test si nota che il limite inferiore è diverso: ciò è dovuto all’<strong>assimmetria della distribuzione</strong> del campione di base</p>
 </section>
 <section id="vantaggi-della-tecnica-bootstrap" class="slide level2">
 <h2>Vantaggi della Tecnica Bootstrap</h2>
@@ -387,7 +423,7 @@ L = Q^-(\hat \theta, (1-0.95)/2),~~~U = Q^+(\hat \theta, (1-0.95)/2)
 <section id="esempio-2" class="slide level2">
 <h2>Esempio</h2>
 <div class="columns">
-<div class="column">
+<div class="column smaller">
 <p>Supponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la <strong>regressione non-lineare</strong> mediante il metodo dei minimi quadrati</p>
 <p>Il caso di interesse è la misura della posizione in cui avviene il contatto tra due corpi, identificato mediante una misura di forza (rumorosa)</p>
 <p>Il modello da regredire è: <span class="math display">\[
@@ -396,7 +432,7 @@ f =
 f_0 &amp; y &lt; y_0 \\
 a y^2 + b y + c &amp; y \geq y_0
 \end{cases}
-\]</span></p>
+\]</span> Dove <span class="math inline">\(f\)</span> è la forza, <span class="math inline">\(f_0\)</span> è il livello della forza prima del contatto, <span class="math inline">\(d_0\)</span> è pa posizione di primo contatto, e <span class="math inline">\(b, ~c\)</span> parametri di forma della curva di contatto</p>
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
@@ -408,12 +444,11 @@ a y^2 + b y + c &amp; y \geq y_0
 </div>
 </div>
 </div></div>
-<p>Dove <span class="math inline">\(f\)</span> è la forza, <span class="math inline">\(f_0\)</span> è il livello della forza prima del contatto, <span class="math inline">\(d_0\)</span> è pa posizione di primo contatto, e <span class="math inline">\(b, ~c\)</span> parametri di forma della curva di contatto</p>
 </section>
 <section id="esempio-3" class="slide level2">
 <h2>Esempio</h2>
 <div class="columns">
-<div class="column">
+<div class="column smaller">
 <p>Siccome <span class="math inline">\(f(\cdot)\)</span> deve essere continua con derivata continua, risulta <span class="math inline">\(2ad_0+b=0\)</span> e <span class="math inline">\(ad_0^2+bd_0+c=f_0\)</span> e quindi si hanno <strong>tre parametri</strong>: <span class="math display">\[
 f =
 \begin{cases}
