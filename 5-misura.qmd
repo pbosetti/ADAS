@@ -8,14 +8,14 @@ institute: "Università di Trento, Dipartimento di Ingegneria Industriale"
 date: "`r Sys.time()`"
 date-format: "[*Ultimo aggiornamento:* ]DD/MM/YYYY"
 format: 
+  pbosetti_teaching_tmpl-revealjs:
+    number-sections: false
   pdf: 
     toc: true
     toc-title: "Indice"
     toc-depth: 2
     toc-numbered: true
     number-sections: true 
-  pbosetti_teaching_tmpl-revealjs:
-    number-sections: false
 revealjs-plugins:
   - tabset
 ---
@@ -176,7 +176,7 @@ Per **informazioni rilevanti** si intende ad esempio:
 :::title
 Definizioni
 :::
-
+:::smaller
 Ricordando che l'**intervallo di confidenza** è definito come
 $$
 P\left(-t_{n-1,\alpha/2}\leq\frac{|\bar x - \mu_0|}{s_x/\sqrt{n}}\leq t_{n-1,\alpha/2}\right) = 1-\alpha
@@ -192,7 +192,7 @@ U_x=t_{\alpha/2,n-1}\frac{s_x}{\sqrt{n}}=t_{\alpha/2,n-1}u_x = k_{n-1}u_x
 $$
 
 Il termine $k_{n-1}$ è chiamato **fattore di copertura**, e dipende solo dalla dimensione del campione (è il quantile della distribuzione T di Student). 
-
+:::
 :::
 
 
@@ -310,18 +310,22 @@ Per "strumento migliore" si intende uno strumento con una precisione migliore di
 
 ## Taratura
 
+:::smaller
 Una **taratura statica** si sviluppa quindi su quattro passaggi:
 
 1. **sviluppo del modello dello strumento**: mediante analisi dei principi fisici si definisce la caratteristica statica come relazione (analitica, numerica o mista) tra ingresso e uscita. Idealmente, un modello completo comprende anche gli **ingressi di disturbo**
 2. **raccolta dei dati di taratura**: una campagna sperimentale fornisce le coppie $(m_i, y_i)$, che **vanno raccolte con $m$ in ordine casuale**
 3. **regressione**: si identificano i parametri del modello
 4. **validazione del modello**: si verifica l'adeguatezza del modello regredito mediante analisi dei residui
+:::
 
+::: {.callout-important}
 La taratura deve anche definire l'**incertezza** dello strumento, dovuta:
 
 * al modello (la *forma* della caratteristica statica)
 * ai parametri del modello
 * alla stima del misurando (dovuta a ingressi di disturbo)
+:::
 
 
 ## Ingressi di disturbo
@@ -344,7 +348,7 @@ L'incertezza si riferisce solo alla componente aleatoria e non prevedibile della
 :::
 
 
-## Esempio: dinamometro a mensola
+## Esempio: dinamometro a mensola {.smaller}
 
 :::columns
 :::column
@@ -355,6 +359,10 @@ L'incertezza si riferisce solo alla componente aleatoria e non prevedibile della
 * un circuito elettrico con voltmetro per convertire la variazione di resistenza in variazione di corrente, mediante **amplificazione**
 
 Il modello dello strumento fornisce:
+
+$$
+V=3/2GV_i\frac{lG_F}{EBH^2}F+V_0 = V_0+ KF
+$$
 :::
 
 :::column
@@ -367,10 +375,6 @@ Il modello dello strumento fornisce:
 :::
 :::
 :::
-
-$$
-V=3/2GV_i\frac{lG_F}{EBH^2}F+V_0 = V_0+ KF
-$$
 
 ## Esempio: dinamometro a mensola
 
@@ -531,7 +535,7 @@ I residui non sono del tutto privi di pattern (andamento a "M"). Tuttavia, aumen
 
 
 
-## Taratura del dinamometro [(con casualizzazione)]{.bgreen}
+## Taratura del dinamometro [(con casualizzazione)]{.bgreen} {.smaller}
 :::columns
 :::column
 Rivediamo cosa sarebbe successo raccogliendo le coppie $(m_i,y_i)$ in **ordine casuale**
@@ -540,7 +544,12 @@ In questo caso l'effetto di aumento della temperatura è nullo sulle coppie racc
 
 La regressione lineare di primo grado questa volta è adatta, anche se la varianza non è costante
 
+
+::: {.callout-warning}
+### Ma attenzione!
 Tuttavia, osservando i **residui in funzione del tempo** si nota che a circa 4 ore inizia a succedere qualcosa che fa aumentare i residui
+:::
+
 :::
 
 :::column
@@ -722,7 +731,7 @@ L'ipotesi che le $x_i$ siano indipendenti **va verificata**, ad esempio con un t
 :::
 
 
-## Esempio: volume di un cilindro
+## Esempio: volume di un cilindro {.smaller}
 Siccome $V=\pi r^2l$ vogliamo calcolare l'incertezza standard sul volume di un cilindro, note che siano le incertezze standard su raggio, $u_r$, e lunghezza, $u_l$
 
 Entrambe le incertezze sono calcolate da un campione di 20 elementi, entrambi con deviazione standard 2.24 mm: $u=s/\sqrt{n} = 2.24/\sqrt{20} = `r round(2.24/sqrt(20), 2)`~\mathrm{mm}$
@@ -781,7 +790,7 @@ data <- tibble(
 )
 ```
 :::columns
-:::column
+:::{.column .smaller}
 **Primo passo**: generazione dei campioni delle misure di raggio e lunghezza
 
 Dopo uno studio della tecnologia di produzione del cilindro, si accerta che 
@@ -790,6 +799,14 @@ Dopo uno studio della tecnologia di produzione del cilindro, si accerta che
 * la distribuzione della lunghezza è gobba, con media 450.0 mm e deviazione standard 0.5 mm
 
 Si generano due campioni da 10 000 elementi ciascuno
+
+
+::: {.callout-important}
+
+Dato che generiamo un'elevata quantità di campioni, secondo la GUM assumiamo che **l'incertezza standard coincida con la deviazione standard**
+
+:::
+
 :::
 
 :::column
@@ -827,8 +844,6 @@ data %>% ggplot(aes(x=l, y=after_stat(density))) +
 :::
 :::
 :::
-
-Dato che generiamo un'elevata quantità di campioni, secondo la GUM assumiamo che **l'incertezza standard coincida con la deviazione standard**
 
 
 ## Esempio: volume di un cilindro

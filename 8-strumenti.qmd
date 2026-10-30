@@ -8,17 +8,18 @@ institute: "Università di Trento, Dipartimento di Ingegneria Industriale"
 date: "`r Sys.time()`"
 date-format: "[*Ultimo aggiornamento:* ]DD/MM/YYYY"
 format: 
+  pbosetti_teaching_tmpl-revealjs:
+    number-sections: false
   pdf: 
     toc: true
     toc-title: "Indice"
     toc-depth: 2
     toc-numbered: true
     number-sections: true 
-  pbosetti_teaching_tmpl-revealjs:
-    number-sections: false
 resources:
   - images/linear-pot.html
   - images/interferometer.html
+  - images/pendulum-scale.html
 revealjs-plugins:
   - tabset
 ---
@@ -257,6 +258,25 @@ Da misure di deformazione a misure di forza
 
 :::column
 ![Bilance analitiche](images/bilancia_analitica.jpg)
+:::
+:::
+
+
+## Bilancia a pendolo
+
+:::columns
+:::{.column width="40%"}
+* Il carico tira la traversa verso il basso: i nastri si svolgono dai settori e i pendoli ruotano verso l'esterno
+* Equilibrio: $\frac{F}{2}R = m g L \sin\varphi$
+* Una cremagliera sulla traversa fa ruotare pignone e indice
+* Con settori circolari la scala **non è lineare** (divisioni più larghe verso il fondo scala)
+:::
+
+:::{.column width="60%"}
+::: {.content-visible when-format="revealjs"}
+<!-- built by anatomy/pendulum-scale/build.mjs --light --out images/pendulum-scale.html -->
+<iframe src="images/pendulum-scale.html" width="100%" height="560" style="border:0" title="Bilancia a pendolo"></iframe>
+:::
 :::
 :::
 

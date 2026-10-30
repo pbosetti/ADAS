@@ -7,15 +7,17 @@ author: "Paolo Bosetti"
 institute: "Università di Trento, Dipartimento di Ingegneria Industriale"
 date: "`r Sys.time()`"
 date-format: "[*Ultimo aggiornamento:* ]DD/MM/YYYY"
+execute:
+  cache: false
 format: 
+  pbosetti_teaching_tmpl-revealjs:
+    number-sections: false
   pdf: 
     toc: true
     toc-title: "Indice"
     toc-depth: 2
     toc-numbered: true
     number-sections: true
-  pbosetti_teaching_tmpl-revealjs:
-    number-sections: false
 revealjs-plugins:
   - tabset
 ---
@@ -59,7 +61,7 @@ In statistica, significa [ricostruire una popolazione da un semplice campione]{.
 
 ::: {.column style="text-align: right"}
 
-![](images/boots.jpeg){width="300px"}
+![Bootstrap: cinghie dello stivale](images/boots.jpeg){width="300px"}
 
 :::
 :::
@@ -76,7 +78,7 @@ La simulazione può essere fatta in due modi:
 * **Bootstrap non-parametrico**: i campioni bootstrap vengono generati dal campione originario mediante campionamento con reinserimento
 * **Bootstrap parametrico** i campioni bootstrap vengono generati da distribuzioni aventi una forma nota (e assunta corretta) e parametri stimati dal campione originario (tipicamente media e varianza).
 
-:::aside
+::: callout-note
 Un **parametro** in statistica, è una costante da cui dipende la *forma* di una distribuzione: ad esempio, la distribuzione $\mathcal{N}(\mu, \sigma^2)$ è una distribuzione a due parametri: il valore atteso $\mu$ e la varianza $\sigma^2$
 :::
 
@@ -248,13 +250,14 @@ In particolare sarà possibile calcolarne:
 * la varianza
 * l'intervallo di confidenza
 
-## Procedura Generale
+## Boostrap Non-Parametrico 
 
-:::theorem
+:::{.theorem}
 :::title
 Procedura
 :::
 
+:::smaller
 Se $x$ è un campione di $n$ elementi provenienti da una distribuzione ignota:
 
 1. si ricampiona $x$ con reinserimento, ottenendo $x_i^*=\left<x^*_{i,1}, x^*_{i,2},\dots,x^*_{1,n}\right>$
@@ -268,7 +271,7 @@ Si possono ora stimare le proprietà del parametro $\theta$ sulla base del campi
 * il valore atteso di $\theta$ è stimata con la media del campione di bootstrap
 * la varianza di $\theta$ è stimata con la varianza del campione di bootstrap
 * l'intervallo di confidenza di $\theta$ è stimato dai quantili del campione di boostrap
-
+:::
 :::
 
 
@@ -288,6 +291,13 @@ Dal grafico è evidente che la **distribuzione non è normale**
 
 Vogliamo calcolare il valore atteso della media campionaria e **il suo intervallo di confidenza**
 
+
+::: {.callout-note}
+### NOTA
+Se valesse l'ipotesi di normalità, l'intervallo di confidenza potrebbe essere calcolato dal T-test a un campione
+:::
+
+
 :::
 
 :::column
@@ -306,7 +316,7 @@ ggMarginal(p, type="histogram", margins="y", bins=10, fill=gray(2/3))
 
 :::
 
-**NOTA**: se valesse l'ipotesi di normalità, l'intervallo di confidenza potrebbe essere calcolato dal T-test a un campione
+
 
 
 ## Esempio
@@ -317,7 +327,7 @@ data.test <- t.test(data)
 
 :::columns
 
-:::column
+:::{.column .smaller}
 Costruiamo un campione di boostrap ricampionando $R=`r N`$ volte il campione originario, calcolando $R+1$ volte la media campionaria
 
 Riportiamo in istogramma le $R+1$ stime della media
@@ -328,6 +338,14 @@ L'**intervallo di confidenza per la media** al 95% è calcolato dai quantili emp
 $$
 L = Q^-(\hat \theta, (1-0.95)/2),~~~U = Q^+(\hat \theta, (1-0.95)/2)
 $$
+
+
+::: {.callout-note}
+
+### NOTA
+Confrontando con l'intervallo calcolato dal T-test si nota che il limite inferiore è diverso: ciò è dovuto all'**assimmetria della distribuzione** del campione di base
+
+:::
 
 :::
 
@@ -357,7 +375,6 @@ tibble(t=data.b$t) %>%
 
 :::
 
-**NOTA**: confrontando con l'intervallo calcolato dal T-test si nota che il limite inferiore è diverso: ciò è dovuto all'**assimmetria della distribuzione** del campione di base
 
 
 
@@ -379,7 +396,7 @@ L'unico svantaggio delle tecniche di bootstrap è che sono tecniche esclusivamen
 ## Esempio
 
 :::columns
-:::column
+:::{.column .smaller}
 
 Supponiamo di voler calcolare gli intervalli di confidenza su una statistica calcolata per via numerica: la **regressione non-lineare** mediante il metodo dei minimi quadrati
 
@@ -393,7 +410,7 @@ f_0 & y < y_0 \\
 a y^2 + b y + c & y \geq y_0
 \end{cases}
 $$
-
+Dove $f$ è la forza, $f_0$ è il livello della forza prima del contatto, $d_0$ è pa posizione di primo contatto, e $b, ~c$ parametri di forma della curva di contatto
 :::
 
 :::column
@@ -426,12 +443,12 @@ data %>% ggplot(aes(x=d, y=f)) +
 
 :::
 
-Dove $f$ è la forza, $f_0$ è il livello della forza prima del contatto, $d_0$ è pa posizione di primo contatto, e $b, ~c$ parametri di forma della curva di contatto
+
 
 ## Esempio
 
 :::columns
-:::column
+:::{.column .smaller}
 Siccome $f(\cdot)$ deve essere continua con derivata continua, risulta $2ad_0+b=0$ e $ad_0^2+bd_0+c=f_0$ e quindi si hanno **tre parametri**:
 $$
 f = 

@@ -24,7 +24,7 @@ library(tidyverse)
 4.  [Bootstrap](4-bootstrap.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](4-bootstrap.pdf){target="_blank"}
 5.  [Misura, incertezza, taratura](5-misura.html){target="\"_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](5-misura.pdf){target="_blank"}
 6.  [*Design of Experiments*](6-DoE.html){target="\"_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](6-DoE.pdf){target="_blank"}
-7.  [Serie temporali](7-serie_temporali.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](7-serie_temporali.pdf){target="_blank"} (opzionale per l'A.A. 2025-26)
+7.  [Serie temporali](7-serie_temporali.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](7-serie_temporali.pdf){target="_blank"} (opzionale dopo l'A.A. 2024-25)
 8.  [Strumenti di misura](8-strumenti.html){target="_blank"} [(PDF {{< bi file-earmark-pdf-fill >}})](8-strumenti.pdf){target="_blank"}
    
 
