@@ -491,7 +491,7 @@ data %>%
 
 ## Taratura del dinamometro (senza casualizzazione)
 :::columns
-:::column
+:::{.column .smaller}
 L'addetto verifica quindi una regressione con un modello di secondo grado
 
 L'analisi dei residui lo soddisfa e quindi accetta la nuova caratteristica statica tarata come un polinomio di secondo grado
@@ -529,26 +529,23 @@ data %>%
 :::
 :::
 
-:::aside
+::: callout-note
 I residui non sono del tutto privi di pattern (andamento a "M"). Tuttavia, aumentando il grado della regressione si può raggiungere un livello (grado 6) in cui i residui sono effettivamente privi di pattern, ma ciò tuttavia non invalida quanto sopra detto
 :::
 
 
 
-## Taratura del dinamometro [(con casualizzazione)]{.bgreen} {.smaller}
+## Taratura del dinamometro [(con casualizzazione)]{.bgreen}
 :::columns
-:::column
+:::{.column .smaller}
 Rivediamo cosa sarebbe successo raccogliendo le coppie $(m_i,y_i)$ in **ordine casuale**
 
 In questo caso l'effetto di aumento della temperatura è nullo sulle coppie raccolte (con valori casuali di $m_i$!) prima di 4 ore; successivamente questo effetto si distribuisce casualmente su tutti i valori del misurando (diventa un ingresso interferente)
 
-La regressione lineare di primo grado questa volta è adatta, anche se la varianza non è costante
+La regressione lineare di primo grado questa volta è adatta: 
 
-
-::: {.callout-warning}
-### Ma attenzione!
-Tuttavia, osservando i **residui in funzione del tempo** si nota che a circa 4 ore inizia a succedere qualcosa che fa aumentare i residui
-:::
+- $\varepsilon(F)$ non ha pattern ma la varianza non è costante
+- $\varepsilon(t)$ mostra due regimi, prima (senza pattern) e dopo 4 ore
 
 :::
 
@@ -591,6 +588,11 @@ data %>%
 ```
 :::
 :::
+:::
+
+::: {.callout-warning}
+### Attenzione!
+Lo studio dei residui in funzione dei parametri e dell'ordine di acquisiaione è sempre un metodo efficace per indagare **effetti ignoti e incontrollati**
 :::
 
 
