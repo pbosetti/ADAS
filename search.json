@@ -413,6 +413,13 @@
     "text": "Esempio: dinamometro a mensola\nLa caratteristica statica dello strumento dipende, oltre che dal misurando \\(F\\), da altri 8 parametri\nPer effettuare la taratura si tengono il più possibile costanti tutti i parametri, eccetto il misurando\nI parametri che non è possibile mantenere costanti si accetta che fluttuino, ripetendo le misurazioni e mediando i risultati: si parla di controllo statistico del processo di taratura, che mitiga l’effetto degli ingressi interferenti\nÈ la condizione in cui si applica il teorema del limite centrale\nGli ingressi modificanti sono più complessi da trattare e richiedono una modifica del modello e il passaggio da uno strumento di misura a un sistema di misura\nAd esempio, la temperatura può influire su tutti i parametri della caratteristica statica: se affianco uno strumento di misura della temperatura e arricchisco il modello con la dipendenza dalla temperatura, posso compensare l’effetto degli ingressi modificanti\n\n\nUn sistema di misura è costituito da più strumenti che lavorano assieme"
   },
   {
+    "objectID": "5-misura.html#il-dinamometro",
+    "href": "5-misura.html#il-dinamometro",
+    "title": "Misura, Incertezza, Taratura",
+    "section": "Il dinamometro",
+    "text": "Il dinamometro"
+  },
+  {
     "objectID": "5-misura.html#casualizzazione-della-sequenza-di-taratura",
     "href": "5-misura.html#casualizzazione-della-sequenza-di-taratura",
     "title": "Misura, Incertezza, Taratura",
